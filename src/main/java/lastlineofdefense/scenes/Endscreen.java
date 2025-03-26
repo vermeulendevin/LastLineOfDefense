@@ -5,15 +5,19 @@ import com.github.hanyaeger.api.scenes.StaticScene;
 import com.github.hanyaeger.api.AnchorPoint;
 import com.github.hanyaeger.api.Coordinate2D;
 import com.github.hanyaeger.api.entities.impl.TextEntity;
-import com.github.hanyaeger.api.scenes.StaticScene;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import lastlineofdefense.LastLineOfDefenseApp;
+import lastlineofdefense.entities.buttons.PlayButton;
+import lastlineofdefense.entities.buttons.QuitButton;
 
 public class Endscreen extends StaticScene {
 
-    public Endscreen(LastLineOfDefenseApp lastLineOfDefenseApp) {
+    private LastLineOfDefenseApp app;
+
+    public Endscreen(LastLineOfDefenseApp app) {
+        this.app = app;
     }
 
     @Override
@@ -50,7 +54,14 @@ public class Endscreen extends StaticScene {
         highScoreText.setFill(Color.WHITE);
         highScoreText.setFont(Font.font("Roboto", FontWeight.SEMI_BOLD, 40));
         addEntity(highScoreText);
-    }
 
+        var playAgainButton = new PlayButton(app, new Coordinate2D(getWidth()/4, (getHeight()/4)*3), "Play Again");
+        playAgainButton.setAnchorPoint(AnchorPoint.CENTER_CENTER);
+        addEntity(playAgainButton);
+
+        var quitButton = new QuitButton(app, new Coordinate2D((getWidth()/4)*3, (getHeight()/4)*3), "Quit Game");
+        quitButton.setAnchorPoint(AnchorPoint.CENTER_CENTER);
+        addEntity(quitButton);
+    }
 
 }
