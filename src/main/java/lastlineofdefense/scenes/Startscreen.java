@@ -8,6 +8,7 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import lastlineofdefense.LastLineOfDefenseApp;
+import lastlineofdefense.entities.buttons.PlayButton;
 
 public class Startscreen extends StaticScene {
     private LastLineOfDefenseApp app;
@@ -28,5 +29,9 @@ public class Startscreen extends StaticScene {
         title.setFill(Color.BLACK);
         title.setFont(Font.font("Roboto", FontWeight.SEMI_BOLD, 60));
         addEntity(title);
+
+        var playButton = new PlayButton(app, new Coordinate2D(getWidth() / 2, getHeight() / 2), "Play");
+        playButton.setAnchorPoint(AnchorPoint.CENTER_CENTER);
+        addEntity(playButton);
     }
 }
