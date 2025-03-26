@@ -1,7 +1,7 @@
 module lastLineOfDefense {
     requires hanyaeger;
 
-    exports com.github.hanyaeger.tutorial;
+    exports lastlineofdefense;
 
     opens audio;
     opens backgrounds;
