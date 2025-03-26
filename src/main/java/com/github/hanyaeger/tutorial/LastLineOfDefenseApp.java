@@ -2,6 +2,7 @@ package com.github.hanyaeger.tutorial;
 
 import com.github.hanyaeger.api.Size;
 import com.github.hanyaeger.api.YaegerGame;
+import com.github.hanyaeger.tutorial.scenes.Endscreen;
 import com.github.hanyaeger.tutorial.scenes.Startscreen;
 
 public class LastLineOfDefenseApp extends YaegerGame {
