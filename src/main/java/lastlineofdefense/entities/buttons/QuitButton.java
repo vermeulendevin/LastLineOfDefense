@@ -24,7 +24,7 @@ public class QuitButton extends TextEntity implements MouseButtonPressedListener
 
     @Override
     public void onMouseButtonPressed(MouseButton mouseButton, Coordinate2D coordinate2D) {
-        app.setActiveScene(1);
+        app.quit();
     }
 
     @Override
