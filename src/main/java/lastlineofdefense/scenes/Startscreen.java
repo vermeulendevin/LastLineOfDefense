@@ -1,12 +1,12 @@
-package com.github.hanyaeger.tutorial.scenes;
+package lastlineofdefense.scenes;
 
 import com.github.hanyaeger.api.scenes.StaticScene;
-import com.github.hanyaeger.tutorial.LastLineOfDefenseApp;
+import lastlineofdefense.LastLineOfDefenseApp;
 
-public class Endscreen extends StaticScene {
+public class Startscreen extends StaticScene {
     private LastLineOfDefenseApp app;
 
-    public Endscreen(LastLineOfDefenseApp app) {
+    public Startscreen(LastLineOfDefenseApp app) {
         this.app = app;
     }
 

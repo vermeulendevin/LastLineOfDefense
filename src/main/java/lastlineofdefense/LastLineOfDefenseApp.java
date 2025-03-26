@@ -1,9 +1,9 @@
-package com.github.hanyaeger.tutorial;
+package lastlineofdefense;
 
 import com.github.hanyaeger.api.Size;
 import com.github.hanyaeger.api.YaegerGame;
-import com.github.hanyaeger.tutorial.scenes.Endscreen;
-import com.github.hanyaeger.tutorial.scenes.Startscreen;
+import lastlineofdefense.scenes.Endscreen;
+import lastlineofdefense.scenes.Startscreen;
 
 public class LastLineOfDefenseApp extends YaegerGame {
     public static void main(String[] args) {
