@@ -1,4 +1,4 @@
-module waterworld {
+module lastLineOfDefense {
     requires hanyaeger;
 
     exports com.github.hanyaeger.tutorial;
