@@ -23,10 +23,10 @@ public class Startscreen extends StaticScene {
 
     @Override
     public void setupEntities() {
-        var title = new TextEntity(new Coordinate2D(getWidth() / 2, getHeight() / 2), "Last Line of Defense");
+        var title = new TextEntity(new Coordinate2D(getWidth() / 2, getHeight() / 4), "Last Line of Defense");
         title.setAnchorPoint(AnchorPoint.CENTER_CENTER);
-        title.setFill(Color.DARKBLUE);
-        title.setFont(Font.font("Roboto", FontWeight.SEMI_BOLD, 80));
+        title.setFill(Color.BLACK);
+        title.setFont(Font.font("Roboto", FontWeight.SEMI_BOLD, 60));
         addEntity(title);
     }
 }
