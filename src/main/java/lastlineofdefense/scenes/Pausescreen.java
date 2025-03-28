@@ -34,6 +34,9 @@ public class Pausescreen extends StaticScene {
         PauseText.setFont(Font.font("Roboto", FontWeight.SEMI_BOLD, 80));
         addEntity(PauseText);
 
+        //TODO OPTIONAL SCORE/HIGHSCORE
+        //TODO RESUME BUTTON
+
         var startOverButton = new PlayButton(app, new Coordinate2D(getWidth()/4, (getHeight()/4)*3), "Start Over");
         startOverButton.setAnchorPoint(AnchorPoint.CENTER_CENTER);
         addEntity(startOverButton);

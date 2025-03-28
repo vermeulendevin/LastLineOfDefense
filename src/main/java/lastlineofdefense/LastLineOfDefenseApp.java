@@ -20,8 +20,10 @@ public class LastLineOfDefenseApp extends YaegerGame {
     @Override
     public void setupScenes() {
 
-        addScene(0, new Startscreen(this));
         addScene(2, new Pausescreen(this));
+
+        addScene(0, new Startscreen(this));
+
         addScene(3, new Endscreen(this));       //TODO goeie volgorde
 
     }
