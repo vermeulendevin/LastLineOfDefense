@@ -18,9 +18,9 @@ public class LastLineOfDefenseApp extends YaegerGame {
 
     @Override
     public void setupScenes() {
-        addScene(0, new Endscreen(this));
+        addScene(3, new Endscreen(this));
 
-        addScene(1, new Startscreen(this));     //TODO: id's terug omwisselen
+        addScene(0, new Startscreen(this));
 
     }
 }
