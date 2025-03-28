@@ -1,11 +1,23 @@
 package lastlineofdefense.entities.player;
 
 import com.github.hanyaeger.api.Coordinate2D;
-import com.github.hanyaeger.api.entities.impl.DynamicSpriteEntity;
+import com.github.hanyaeger.api.entities.DynamicCompositeEntity;
+import com.github.hanyaeger.api.entities.SceneBorderCrossingWatcher;
+import com.github.hanyaeger.api.scenes.SceneBorder;
 
-public class Player extends DynamicSpriteEntity {
+public class Player extends DynamicCompositeEntity implements SceneBorderCrossingWatcher {
 
-    public Player(String resource, Coordinate2D initialLocation) {
-        super(resource, initialLocation);
+    protected Player(Coordinate2D initialLocation) {
+        super(initialLocation);
+    }
+
+    @Override
+    protected void setupEntities() {
+
+    }
+
+    @Override
+    public void notifyBoundaryCrossing(SceneBorder sceneBorder) {
+
     }
 }
