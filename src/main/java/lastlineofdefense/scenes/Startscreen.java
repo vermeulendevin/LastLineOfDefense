@@ -31,11 +31,11 @@ public class Startscreen extends StaticScene {
         title.setFont(Font.font("Roboto", FontWeight.SEMI_BOLD, 60));
         addEntity(title);
 
-        var playButton = new PlayButton(app, new Coordinate2D(getWidth() / 2, getHeight() / 2), "Play");
+        var playButton = new PlayButton(app, new Coordinate2D(getWidth() / 4, getHeight() / 4 * 3), "Play");
         playButton.setAnchorPoint(AnchorPoint.CENTER_CENTER);
         addEntity(playButton);
 
-        var quitButton = new QuitButton(app, new Coordinate2D(getWidth() / 2, getHeight() / 2 + 100), "Quit");
+        var quitButton = new QuitButton(app, new Coordinate2D(getWidth() / 4 * 3, getHeight() / 4 * 3), "Quit");
         quitButton.setAnchorPoint(AnchorPoint.CENTER_CENTER);
         addEntity(quitButton);
     }
