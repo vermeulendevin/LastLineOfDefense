@@ -2,7 +2,6 @@ package lastlineofdefense.entities.player;
 
 import com.github.hanyaeger.api.Coordinate2D;
 import com.github.hanyaeger.api.entities.DynamicCompositeEntity;
-import com.github.hanyaeger.api.entities.SceneBorderCrossingWatcher;
 import com.github.hanyaeger.api.entities.SceneBorderTouchingWatcher;
 import com.github.hanyaeger.api.scenes.SceneBorder;
 import com.github.hanyaeger.api.userinput.KeyListener;
@@ -23,7 +22,10 @@ public class Player extends DynamicCompositeEntity implements SceneBorderTouchin
 
     @Override
     protected void setupEntities() {
-
+        final PlayerSprite playerSprite = new PlayerSprite(new Coordinate2D(0, 0));
+        final PlayerHitbox playerHitbox = new PlayerHitbox(new Coordinate2D(0, 40));
+        addEntity(playerSprite);
+        addEntity(playerHitbox);
     }
 
     @Override
