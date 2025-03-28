@@ -9,6 +9,7 @@ import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import lastlineofdefense.LastLineOfDefenseApp;
 import lastlineofdefense.entities.buttons.PlayButton;
+import lastlineofdefense.entities.buttons.QuitButton;
 
 public class Startscreen extends StaticScene {
     private LastLineOfDefenseApp app;
@@ -33,5 +34,9 @@ public class Startscreen extends StaticScene {
         var playButton = new PlayButton(app, new Coordinate2D(getWidth() / 2, getHeight() / 2), "Play");
         playButton.setAnchorPoint(AnchorPoint.CENTER_CENTER);
         addEntity(playButton);
+
+        var quitButton = new QuitButton(app, new Coordinate2D(getWidth() / 2, getHeight() / 2 + 100), "Quit");
+        quitButton.setAnchorPoint(AnchorPoint.CENTER_CENTER);
+        addEntity(quitButton);
     }
 }
