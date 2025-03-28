@@ -18,7 +18,7 @@ public class PlayButton extends TextEntity implements MouseButtonPressedListener
     public PlayButton(LastLineOfDefenseApp app, Coordinate2D initialLocation, String text) {
         super(initialLocation, text);
         this.app = app;
-        setFill(Color.PURPLE);
+        setFill(Color.GREEN);
         setFont(Font.font("Roboto", FontWeight.BOLD, 30));
     }
 
@@ -29,13 +29,13 @@ public class PlayButton extends TextEntity implements MouseButtonPressedListener
 
     @Override
     public void onMouseEntered() {
-        setFill(Color.VIOLET);
+        setFill(Color.DARKGREEN);
         setCursor(Cursor.HAND);
     }
 
     @Override
     public void onMouseExited() {
-        setFill(Color.PURPLE);
+        setFill(Color.GREEN);
         setCursor(Cursor.DEFAULT);
     }
 }
