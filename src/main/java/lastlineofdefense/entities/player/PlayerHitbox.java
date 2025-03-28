@@ -17,7 +17,13 @@ public class PlayerHitbox extends RectangleEntity implements Collided {
     }
 
     @Override
-    public void onCollision(List<Collider> list) {
+    public void onCollision(List<Collider> collidingObject) {
+        var bulletCollision = false;
 
+        for(Collider collider : collidingObject) {
+            if (collider instanceof Bullet) {
+                bulletCollision = true;
+            }
+        }
     }
 }
