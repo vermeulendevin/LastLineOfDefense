@@ -63,5 +63,4 @@ public class Endscreen extends StaticScene {
         quitButton.setAnchorPoint(AnchorPoint.CENTER_CENTER);
         addEntity(quitButton);
     }
-
 }
