@@ -20,10 +20,10 @@ public class PlayerHitbox extends RectangleEntity implements Collided {
     public void onCollision(List<Collider> collidingObject) {
         var bulletCollision = false;
 
-        for(Collider collider : collidingObject) {
-            if (collider instanceof Bullet) {
-                bulletCollision = true;
-            }
-        }
+//        for(Collider collider : collidingObject) {
+//            if (collider instanceof Bullet) {
+//                bulletCollision = true;
+//            }
+//        }
     }
 }
