@@ -1,10 +1,14 @@
 package lastlineofdefense.scenes;
 
+import com.github.hanyaeger.api.Coordinate2D;
 import com.github.hanyaeger.api.scenes.DynamicScene;
 import lastlineofdefense.LastLineOfDefenseApp;
+import lastlineofdefense.entities.player.Player;
 
 public class Gamescreen extends DynamicScene {
-    public Gamescreen(LastLineOfDefenseApp lastLineOfDefenseApp) {
+    private LastLineOfDefenseApp app;
+    public Gamescreen(LastLineOfDefenseApp app) {
+        this.app = app;
     }
 
     @Override
@@ -15,6 +19,6 @@ public class Gamescreen extends DynamicScene {
 
     @Override
     public void setupEntities() {
-
+        addEntity(new Player(new Coordinate2D(app, 400, 300)));
     }
 }
