@@ -15,16 +15,16 @@ public class Player extends DynamicCompositeEntity implements SceneBorderTouchin
     private LastLineOfDefenseApp app;
     private byte lives = 3;
 
-    protected Player(LastLineOfDefenseApp app, Coordinate2D initialLocation) {
+    public Player(LastLineOfDefenseApp app, Coordinate2D initialLocation) {
         super(initialLocation);
         this.app = app;
     }
 
     @Override
     protected void setupEntities() {
-//        final PlayerSprite playerSprite = new PlayerSprite(new Coordinate2D(0, 0));
+        final PlayerSprite playerSprite = new PlayerSprite("sprites/soldier1.svg", new Coordinate2D(0, 0));
         final PlayerHitbox playerHitbox = new PlayerHitbox(new Coordinate2D(0, 40));
-//        addEntity(playerSprite);
+        addEntity(playerSprite);
         addEntity(playerHitbox);
     }
 

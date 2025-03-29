@@ -5,4 +5,5 @@ module lastLineOfDefense {
 
     opens audio;
     opens backgrounds;
+    opens sprites;
 }
