@@ -13,7 +13,7 @@ import java.util.Set;
 public class Player extends DynamicCompositeEntity implements SceneBorderTouchingWatcher, KeyListener {
 
     private LastLineOfDefenseApp app;
-    private byte health = 3;
+    private byte lives = 3;
 
     protected Player(LastLineOfDefenseApp app, Coordinate2D initialLocation) {
         super(initialLocation);
@@ -32,6 +32,7 @@ public class Player extends DynamicCompositeEntity implements SceneBorderTouchin
     public void notifyBoundaryTouching(SceneBorder border) {
         setSpeed(0);
 
+        // TODO: Remove top and button
         switch(border) {
             case TOP:
                 setAnchorLocationY(1);
