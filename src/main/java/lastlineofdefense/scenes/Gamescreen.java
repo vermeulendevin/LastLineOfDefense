@@ -19,6 +19,6 @@ public class Gamescreen extends DynamicScene {
 
     @Override
     public void setupEntities() {
-        addEntity(new Player(new Coordinate2D(app, 400, 300)));
+        addEntity(new Player(app, new Coordinate2D(400, 300)));
     }
 }
