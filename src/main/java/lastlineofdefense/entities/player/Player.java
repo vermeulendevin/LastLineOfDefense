@@ -32,14 +32,7 @@ public class Player extends DynamicCompositeEntity implements SceneBorderTouchin
     public void notifyBoundaryTouching(SceneBorder border) {
         setSpeed(0);
 
-        // TODO: Remove top and button
         switch(border) {
-            case TOP:
-                setAnchorLocationY(1);
-                break;
-            case BOTTOM:
-                setAnchorLocationY(getSceneHeight() - getHeight() - 1);
-                break;
             case LEFT:
                 setAnchorLocationX(1);
                 break;
