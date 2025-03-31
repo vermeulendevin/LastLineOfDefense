@@ -18,6 +18,8 @@ public class BunkerHitbox extends RectangleEntity implements Collided {
 
     @Override
     public void onCollision(List<Collider> collidingObject) {
+        for(Collider collider : collidingObject) {
 
+        }
     }
 }
