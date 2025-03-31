@@ -20,7 +20,7 @@ public class Player extends DynamicCompositeEntity implements SceneBorderTouchin
         super(initialLocation);
         this.app = app;
         setGravityConstant(0);
-        setFrictionConstant(0.2);
+        setFrictionConstant(0.5);
     }
 
     @Override
