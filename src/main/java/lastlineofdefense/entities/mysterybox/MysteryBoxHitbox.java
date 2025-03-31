@@ -9,8 +9,8 @@ public class MysteryBoxHitbox extends RectangleEntity implements Collider {
 
     protected MysteryBoxHitbox(Coordinate2D initialLocation) {
         super(initialLocation);
-        setWidth(100);
-        setHeight(100);
+        setWidth(50);
+        setHeight(50);
         setFill(Color.TRANSPARENT);
     }
 }

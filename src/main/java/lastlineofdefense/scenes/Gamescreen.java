@@ -3,6 +3,7 @@ package lastlineofdefense.scenes;
 import com.github.hanyaeger.api.Coordinate2D;
 import com.github.hanyaeger.api.scenes.DynamicScene;
 import lastlineofdefense.LastLineOfDefenseApp;
+import lastlineofdefense.entities.mysterybox.MysteryBox;
 import lastlineofdefense.entities.player.Player;
 
 public class Gamescreen extends DynamicScene {
@@ -21,5 +22,6 @@ public class Gamescreen extends DynamicScene {
     @Override
     public void setupEntities() {
         addEntity(new Player(app, new Coordinate2D(getWidth() / 2, getHeight() / 8 * 7)));
+        addEntity(new MysteryBox(new Coordinate2D(200, 200)));
     }
 }
