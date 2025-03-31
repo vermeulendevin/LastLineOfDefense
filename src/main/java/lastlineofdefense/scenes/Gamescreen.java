@@ -4,6 +4,7 @@ import com.github.hanyaeger.api.Coordinate2D;
 import com.github.hanyaeger.api.scenes.DynamicScene;
 import lastlineofdefense.LastLineOfDefenseApp;
 import lastlineofdefense.entities.player.Player;
+import lastlineofdefense.hud.scoreboard.Lives;
 import lastlineofdefense.hud.scoreboard.Scoreboard;
 
 public class Gamescreen extends DynamicScene {
@@ -28,8 +29,10 @@ public class Gamescreen extends DynamicScene {
         Score.displayScore();
         addEntity(Score);
 
-        var HighScore = new Scoreboard(new Coordinate2D(575, 15));
+        var HighScore = new Scoreboard(new Coordinate2D(getWidth()-225, 15));
         HighScore.displayHighScore();
         addEntity(HighScore);
+
+        addEntity(new Lives(new Coordinate2D(30, getHeight()-55)));
     }
 }
