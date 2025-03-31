@@ -11,6 +11,10 @@ public class Bunker extends DynamicCompositeEntity {
 
     @Override
     protected void setupEntities() {
+        var bunkerSprite = new BunkerSprite(new Coordinate2D(0, 0));
+        var bunkerHitbox = new BunkerHitbox(new Coordinate2D(0, 0));
 
+        addEntity(bunkerSprite);
+        addEntity(bunkerHitbox);
     }
 }
