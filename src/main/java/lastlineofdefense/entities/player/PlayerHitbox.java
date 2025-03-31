@@ -11,8 +11,8 @@ import java.util.List;
 public class PlayerHitbox extends RectangleEntity implements Collided {
     protected PlayerHitbox(Coordinate2D initialLocation) {
         super(initialLocation);
-        setWidth(100);
-        setHeight(100);
+        setWidth(50);
+        setHeight(50);
         setFill(Color.TRANSPARENT);
     }
 
