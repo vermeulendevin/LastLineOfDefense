@@ -7,6 +7,7 @@ import lastlineofdefense.entities.player.Player;
 
 public class Gamescreen extends DynamicScene {
     private LastLineOfDefenseApp app;
+
     public Gamescreen(LastLineOfDefenseApp app) {
         this.app = app;
     }
@@ -19,6 +20,6 @@ public class Gamescreen extends DynamicScene {
 
     @Override
     public void setupEntities() {
-        addEntity(new Player(app, new Coordinate2D(400, 300)));
+        addEntity(new Player(app, new Coordinate2D(getWidth() / 2, getHeight() / 8 * 7)));
     }
 }

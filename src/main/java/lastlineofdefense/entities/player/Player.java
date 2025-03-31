@@ -22,8 +22,8 @@ public class Player extends DynamicCompositeEntity implements SceneBorderTouchin
 
     @Override
     protected void setupEntities() {
-        final PlayerSprite playerSprite = new PlayerSprite("sprites/soldier1.svg", new Coordinate2D(0, 0));
-        final PlayerHitbox playerHitbox = new PlayerHitbox(new Coordinate2D(0, 40));
+        final PlayerSprite playerSprite = new PlayerSprite(new Coordinate2D(0, 0));
+        final PlayerHitbox playerHitbox = new PlayerHitbox(new Coordinate2D(0, 0));
         addEntity(playerSprite);
         addEntity(playerHitbox);
     }
