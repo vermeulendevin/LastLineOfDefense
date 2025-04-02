@@ -15,7 +15,7 @@ public class LastLineOfDefenseApp extends YaegerGame {
     @Override
     public void setupGame() {
         setGameTitle("Last Line of Defense");
-        setSize(new Size(800,600));
+        setSize(new Size(1200,750));
     }
 
     @Override
