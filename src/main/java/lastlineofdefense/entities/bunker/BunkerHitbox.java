@@ -26,6 +26,7 @@ public class BunkerHitbox extends RectangleEntity implements Collided {
         for(Collider collider : collidingObject) {
             if(collider instanceof Bullet) {
                 bunker.hitBunker();
+                ((Bullet) collider).remove();
             }
         }
     }
