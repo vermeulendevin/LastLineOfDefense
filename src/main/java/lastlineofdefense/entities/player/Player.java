@@ -8,6 +8,7 @@ import com.github.hanyaeger.api.scenes.SceneBorder;
 import com.github.hanyaeger.api.userinput.KeyListener;
 import javafx.scene.input.KeyCode;
 import lastlineofdefense.LastLineOfDefenseApp;
+import lastlineofdefense.entities.bullet.Bullet;
 
 import java.util.Set;
 
@@ -53,6 +54,8 @@ public class Player extends DynamicCompositeEntity implements SceneBorderTouchin
             setMotion(5,270d);
         } else if(pressedKeys.contains(KeyCode.D)){
             setMotion(5,90d);
+        } else if(pressedKeys.contains(KeyCode.ENTER)) {
+            addEntity(new Bullet(new Coordinate2D(getAnchorLocation().getX() + getWidth() / 2, getAnchorLocation().getY()), 0d));
         }
     }
 }
