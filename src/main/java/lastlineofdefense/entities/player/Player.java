@@ -68,6 +68,6 @@ public class Player extends DynamicCompositeEntity implements SceneBorderTouchin
     }
 
     public double getX() {
-        return getAnchorLocation().getX();
+        return getAnchorLocation().getX() + getWidth() / 2;
     }
 }
