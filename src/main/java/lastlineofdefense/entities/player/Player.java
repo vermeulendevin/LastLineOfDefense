@@ -9,7 +9,6 @@ import com.github.hanyaeger.api.scenes.SceneBorder;
 import com.github.hanyaeger.api.userinput.KeyListener;
 import javafx.scene.input.KeyCode;
 import lastlineofdefense.LastLineOfDefenseApp;
-import lastlineofdefense.entities.bullet.Bullet;
 import lastlineofdefense.scenes.Gamescreen;
 
 import java.util.Set;
