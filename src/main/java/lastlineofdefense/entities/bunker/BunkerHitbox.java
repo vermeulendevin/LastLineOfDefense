@@ -9,6 +9,8 @@ import javafx.scene.paint.Color;
 import java.util.List;
 
 public class BunkerHitbox extends RectangleEntity implements Collided {
+    private int health = 5;
+
     protected BunkerHitbox(Coordinate2D initialLocation) {
         super(initialLocation);
         setWidth(100);
@@ -19,7 +21,12 @@ public class BunkerHitbox extends RectangleEntity implements Collided {
     @Override
     public void onCollision(List<Collider> collidingObject) {
         for(Collider collider : collidingObject) {
-
+//            if(collider instanceof Bullet) {
+//                health--;
+//                if(health == 0) {
+//                    setFill(Color.TRANSPARENT);
+//                }
+//            }
         }
     }
 }
