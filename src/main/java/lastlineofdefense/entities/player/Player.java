@@ -8,17 +8,21 @@ import com.github.hanyaeger.api.scenes.SceneBorder;
 import com.github.hanyaeger.api.userinput.KeyListener;
 import javafx.scene.input.KeyCode;
 import lastlineofdefense.LastLineOfDefenseApp;
+import lastlineofdefense.entities.bullet.Bullet;
+import lastlineofdefense.scenes.Gamescreen;
 
 import java.util.Set;
 
 public class Player extends DynamicCompositeEntity implements SceneBorderTouchingWatcher, KeyListener, Newtonian {
 
     private LastLineOfDefenseApp app;
+    private Gamescreen gamescreen;
     private byte lives = 3;
 
-    public Player(LastLineOfDefenseApp app, Coordinate2D initialLocation) {
+    public Player(LastLineOfDefenseApp app, Gamescreen gamescreen, Coordinate2D initialLocation) {
         super(initialLocation);
         this.app = app;
+        this.gamescreen = gamescreen;
         setGravityConstant(0);
         setFrictionConstant(0.5);
     }
@@ -53,6 +57,17 @@ public class Player extends DynamicCompositeEntity implements SceneBorderTouchin
             setMotion(5,270d);
         } else if(pressedKeys.contains(KeyCode.D)){
             setMotion(5,90d);
+        } else if(pressedKeys.contains(KeyCode.ENTER)) {
+            shoot();
+            System.out.println("Shoot");
         }
+    }
+
+    public void shoot() {
+        gamescreen.createBullet();
+    }
+
+    public double getX() {
+        return getAnchorLocation().getX();
     }
 }
