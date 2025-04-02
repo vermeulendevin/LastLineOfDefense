@@ -10,10 +10,12 @@ import lastlineofdefense.entities.bullet.Bullet;
 import java.util.List;
 
 public class BunkerHitbox extends RectangleEntity implements Collided {
-    private int health = 5;
 
-    protected BunkerHitbox(Coordinate2D initialLocation) {
+    private Bunker bunker;
+
+    protected BunkerHitbox(Bunker bunker, Coordinate2D initialLocation) {
         super(initialLocation);
+        this.bunker = bunker;
         setWidth(100);
         setHeight(100);
         setFill(Color.TRANSPARENT);
@@ -23,12 +25,7 @@ public class BunkerHitbox extends RectangleEntity implements Collided {
     public void onCollision(List<Collider> collidingObject) {
         for(Collider collider : collidingObject) {
             if(collider instanceof Bullet) {
-                health--;
-                ((Bullet) collider).remove();
-                System.out.println("HITTT");
-                if(health == 0) {
-                    setFill(Color.TRANSPARENT);
-                }
+                bunker.hitBunker();
             }
         }
     }
