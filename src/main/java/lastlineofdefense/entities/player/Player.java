@@ -1,5 +1,6 @@
 package lastlineofdefense.entities.player;
 
+import com.github.hanyaeger.api.AnchorPoint;
 import com.github.hanyaeger.api.Coordinate2D;
 import com.github.hanyaeger.api.entities.DynamicCompositeEntity;
 import com.github.hanyaeger.api.entities.Newtonian;
@@ -31,6 +32,10 @@ public class Player extends DynamicCompositeEntity implements SceneBorderTouchin
     protected void setupEntities() {
         final PlayerSprite playerSprite = new PlayerSprite(new Coordinate2D(0, 0));
         final PlayerHitbox playerHitbox = new PlayerHitbox(new Coordinate2D(0, 0));
+
+        playerSprite.setAnchorPoint(AnchorPoint.CENTER_CENTER);
+        playerHitbox.setAnchorPoint(AnchorPoint.CENTER_CENTER);
+
         addEntity(playerSprite);
         addEntity(playerHitbox);
     }
