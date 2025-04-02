@@ -25,7 +25,7 @@ public class Gamescreen extends DynamicScene {
     @Override
     public void setupEntities() {
 
-        addEntity(new Player(app, new Coordinate2D(getWidth() / 2, getHeight() / 10 * 8.5)));
+        addEntity(new Player(app, new Coordinate2D(100, getHeight() / 10 * 8.5)));
 
         var Score = new Scoreboard(new Coordinate2D(30, 15));
         Score.displayScore();

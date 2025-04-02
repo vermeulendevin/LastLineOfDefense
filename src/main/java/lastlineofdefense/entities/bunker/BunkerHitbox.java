@@ -24,6 +24,8 @@ public class BunkerHitbox extends RectangleEntity implements Collided {
         for(Collider collider : collidingObject) {
             if(collider instanceof Bullet) {
                 health--;
+                ((Bullet) collider).remove();
+                System.out.println("HITTT");
                 if(health == 0) {
                     setFill(Color.TRANSPARENT);
                 }
