@@ -20,6 +20,9 @@ public class Bunker extends DynamicCompositeEntity {
         bunkerSprite.setAnchorPoint(AnchorPoint.CENTER_CENTER);
         bunkerHitbox.setAnchorPoint(AnchorPoint.CENTER_CENTER);
 
+        bunkerSprite.setAnchorPoint(AnchorPoint.CENTER_CENTER);
+        bunkerHitbox.setAnchorPoint(AnchorPoint.CENTER_CENTER);
+
         addEntity(bunkerSprite);
         addEntity(bunkerHitbox);
     }

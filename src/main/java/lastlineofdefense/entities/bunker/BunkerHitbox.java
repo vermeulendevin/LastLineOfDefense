@@ -17,7 +17,7 @@ public class BunkerHitbox extends RectangleEntity implements Collided {
         super(initialLocation);
         this.bunker = bunker;
         setWidth(100);
-        setHeight(100);
+        setHeight(60);
         setFill(Color.TRANSPARENT);
     }
 
