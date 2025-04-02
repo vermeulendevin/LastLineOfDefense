@@ -2,6 +2,7 @@ package lastlineofdefense.entities.player;
 
 import com.github.hanyaeger.api.Coordinate2D;
 import com.github.hanyaeger.api.entities.DynamicCompositeEntity;
+import com.github.hanyaeger.api.entities.Newtonian;
 import com.github.hanyaeger.api.entities.SceneBorderTouchingWatcher;
 import com.github.hanyaeger.api.scenes.SceneBorder;
 import com.github.hanyaeger.api.userinput.KeyListener;
@@ -10,7 +11,7 @@ import lastlineofdefense.LastLineOfDefenseApp;
 
 import java.util.Set;
 
-public class Player extends DynamicCompositeEntity implements SceneBorderTouchingWatcher, KeyListener {
+public class Player extends DynamicCompositeEntity implements SceneBorderTouchingWatcher, KeyListener, Newtonian {
 
     private LastLineOfDefenseApp app;
     private byte lives = 3;
@@ -18,6 +19,8 @@ public class Player extends DynamicCompositeEntity implements SceneBorderTouchin
     public Player(LastLineOfDefenseApp app, Coordinate2D initialLocation) {
         super(initialLocation);
         this.app = app;
+        setGravityConstant(0);
+        setFrictionConstant(0.5);
     }
 
     @Override
@@ -47,9 +50,9 @@ public class Player extends DynamicCompositeEntity implements SceneBorderTouchin
     @Override
     public void onPressedKeysChange(Set<KeyCode> pressedKeys) {
         if(pressedKeys.contains(KeyCode.A)){
-            setMotion(3,270d);
+            setMotion(5,270d);
         } else if(pressedKeys.contains(KeyCode.D)){
-            setMotion(3,90d);
+            setMotion(5,90d);
         }
     }
 }

@@ -1,13 +1,11 @@
-package lastlineofdefense.entities.player;
+package lastlineofdefense.entities.mysterybox;
 
 import com.github.hanyaeger.api.Coordinate2D;
 import com.github.hanyaeger.api.Size;
-import com.github.hanyaeger.api.entities.impl.DynamicSpriteEntity;
 import com.github.hanyaeger.api.entities.impl.SpriteEntity;
 
-public class PlayerSprite extends SpriteEntity {
-
-    protected PlayerSprite(Coordinate2D initialLocation) {
+public class MysteryBoxSprite extends SpriteEntity {
+    protected MysteryBoxSprite(Coordinate2D initialLocation) {
         super("sprites/test.png", initialLocation, new Size(50, 50));
     }
 }

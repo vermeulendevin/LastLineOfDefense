@@ -1,4 +1,4 @@
-package lastlineofdefense.entities.player;
+package lastlineofdefense.entities.bunker;
 
 import com.github.hanyaeger.api.Coordinate2D;
 import com.github.hanyaeger.api.entities.Collided;
@@ -8,22 +8,18 @@ import javafx.scene.paint.Color;
 
 import java.util.List;
 
-public class PlayerHitbox extends RectangleEntity implements Collided {
-    protected PlayerHitbox(Coordinate2D initialLocation) {
+public class BunkerHitbox extends RectangleEntity implements Collided {
+    protected BunkerHitbox(Coordinate2D initialLocation) {
         super(initialLocation);
-        setWidth(50);
-        setHeight(50);
+        setWidth(100);
+        setHeight(100);
         setFill(Color.TRANSPARENT);
     }
 
     @Override
     public void onCollision(List<Collider> collidingObject) {
-        var bulletCollision = false;
+        for(Collider collider : collidingObject) {
 
-//        for(Collider collider : collidingObject) {
-//            if (collider instanceof Bullet) {
-//                bulletCollision = true;
-//            }
-//        }
+        }
     }
 }
