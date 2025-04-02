@@ -54,8 +54,6 @@ public class Player extends DynamicCompositeEntity implements SceneBorderTouchin
             setMotion(5,270d);
         } else if(pressedKeys.contains(KeyCode.D)){
             setMotion(5,90d);
-        } else if(pressedKeys.contains(KeyCode.ENTER)) {
-            addEntity(new Bullet(new Coordinate2D(getAnchorLocation().getX() + getWidth() / 2, getAnchorLocation().getY()), 0d));
         }
     }
 }
