@@ -50,7 +50,7 @@ public class Gamescreen extends DynamicScene {
         }
 
         for(int i = 0; i < nrOfBunkers; i++) {
-            addEntity(new Bunker(new Coordinate2D(100 + i * 300, getHeight() / 10 * 6.5)));
+            addEntity(new Bunker(new Coordinate2D(150 + i * 300, getHeight() / 10 * 6.5)));
         }
     }
 
