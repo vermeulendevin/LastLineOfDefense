@@ -6,6 +6,8 @@ import com.github.hanyaeger.api.entities.DynamicCompositeEntity;
 
 public class Bunker extends DynamicCompositeEntity {
 
+    private int health = 5;
+
     public Bunker(Coordinate2D initialLocation) {
         super(initialLocation);
     }
@@ -13,7 +15,10 @@ public class Bunker extends DynamicCompositeEntity {
     @Override
     protected void setupEntities() {
         var bunkerSprite = new BunkerSprite(new Coordinate2D(0, 0));
-        var bunkerHitbox = new BunkerHitbox(new Coordinate2D(0, 0));
+        var bunkerHitbox = new BunkerHitbox(this, new Coordinate2D(0, 0));
+
+        bunkerSprite.setAnchorPoint(AnchorPoint.CENTER_CENTER);
+        bunkerHitbox.setAnchorPoint(AnchorPoint.CENTER_CENTER);
 
         bunkerSprite.setAnchorPoint(AnchorPoint.CENTER_CENTER);
         bunkerHitbox.setAnchorPoint(AnchorPoint.CENTER_CENTER);
@@ -21,4 +26,12 @@ public class Bunker extends DynamicCompositeEntity {
         addEntity(bunkerSprite);
         addEntity(bunkerHitbox);
     }
+
+    public void hitBunker() {
+        health--;
+        if (health == 0) {
+            remove();
+        }
+    }
 }
+
