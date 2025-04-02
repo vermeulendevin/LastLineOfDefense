@@ -33,6 +33,23 @@ public class Gamescreen extends DynamicScene {
         HighScore.displayHighScore();
         addEntity(HighScore);
 
+
+        int LivesStartX = 10;
+        int LivesY = 200;
+        int LivesSpacing = 10;
+        int numberOfLives = 3;      //TODO: change to Player.getLives()
+
+        for (int i = 0; i < numberOfLives; i++) {
+            int livesX = LivesStartX + (i * LivesSpacing);
+            new Lives(livesX, LivesY);
+        }
+
+        // Print to check
+        for (Lives life : livesList) {
+            System.out.println("Life at: (" + life.getX() + ", " + life.getY() + ")");
+        }
+    }
+}
         addEntity(new Lives(new Coordinate2D(30, getHeight()-55)));
     }
 }

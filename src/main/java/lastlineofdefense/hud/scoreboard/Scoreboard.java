@@ -26,6 +26,8 @@ public class Scoreboard extends TextEntity {
             highScore = currentScore;
         }
         setText("High Score: " + highScore);
+
+
     }
 
     public int getCurrentScore () {
