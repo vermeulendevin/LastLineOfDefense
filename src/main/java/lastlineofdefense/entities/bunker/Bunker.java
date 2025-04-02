@@ -5,7 +5,6 @@ import com.github.hanyaeger.api.entities.DynamicCompositeEntity;
 
 public class Bunker extends DynamicCompositeEntity {
 
-    protected byte health = 4;
     public Bunker(Coordinate2D initialLocation) {
         super(initialLocation);
     }
