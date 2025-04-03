@@ -12,8 +12,11 @@ import java.util.List;
 
 public class MysteryBoxHitbox extends RectangleEntity implements Collided {
 
-    protected MysteryBoxHitbox(Coordinate2D initialLocation) {
+    private MysteryBox mysteryBox;
+
+    protected MysteryBoxHitbox(MysteryBox mysteryBox, Coordinate2D initialLocation) {
         super(initialLocation);
+        this.mysteryBox = mysteryBox;
         setWidth(50);
         setHeight(50);
         setFill(Color.TRANSPARENT);
@@ -23,7 +26,9 @@ public class MysteryBoxHitbox extends RectangleEntity implements Collided {
     public void onCollision(List<Collider> collidingObject) {
         for(Collider collider : collidingObject) {
             if(collider instanceof PlayerHitbox playerHitbox) {
-
+                Player player = playerHitbox.getPlayer();
+                player.setPowerUp(mysteryBox.getPowerUp());
+                mysteryBox.removeMysteryBox();
             }
         }
     }

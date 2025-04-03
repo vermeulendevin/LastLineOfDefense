@@ -87,4 +87,8 @@ public class Player extends DynamicCompositeEntity implements SceneBorderTouchin
     public void setFireRate(int i) {
         this.fireRate = i;
     }
+
+    public void setPowerUp(IPowerUp powerUp) {
+        powerUp.activatePowerUp(this);
+    }
 }
