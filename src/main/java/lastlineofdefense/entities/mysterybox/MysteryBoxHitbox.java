@@ -26,8 +26,9 @@ public class MysteryBoxHitbox extends RectangleEntity implements Collided {
     public void onCollision(List<Collider> collidingObject) {
         for(Collider collider : collidingObject) {
             if(collider instanceof PlayerHitbox playerHitbox) {
-                Player player = playerHitbox.getPLayer();
+                Player player = playerHitbox.getPlayer();
                 mysteryBox.activateRandomPowerUp(player);
+                mysteryBox.removeMysteryBox();
             }
         }
     }

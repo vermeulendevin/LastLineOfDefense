@@ -20,7 +20,7 @@ public class PlayerHitbox extends RectangleEntity implements Collided, Collider 
         setFill(Color.TRANSPARENT);
     }
 
-    public Player getPLayer() {
+    public Player getPlayer() {
         return player;
     }
 

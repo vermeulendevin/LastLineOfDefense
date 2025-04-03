@@ -47,4 +47,8 @@ public class MysteryBox extends DynamicCompositeEntity implements Newtonian, Sce
         IPowerUp chosenPowerUp = powerUps.get(new Random().nextInt(powerUps.size()));
         chosenPowerUp.activatePowerUp(player);
     }
+
+    public void removeMysteryBox() {
+        remove();
+    }
 }
