@@ -8,13 +8,14 @@ import com.github.hanyaeger.api.scenes.SceneBorder;
 import lastlineofdefense.entities.player.Player;
 import lastlineofdefense.entities.powerup.FullAuto;
 import lastlineofdefense.entities.powerup.IPowerUp;
+import lastlineofdefense.entities.powerup.PlusOneLife;
 
 import java.util.List;
 import java.util.Random;
 
 public class MysteryBox extends DynamicCompositeEntity implements Newtonian, SceneBorderTouchingWatcher {
 
-    private final List<IPowerUp> powerUps = List.of(new FullAuto());
+    private final List<IPowerUp> powerUps = List.of(new FullAuto(), new PlusOneLife());
 
     private IPowerUp powerUp;
     private Player player;

@@ -90,4 +90,12 @@ public class Player extends DynamicCompositeEntity implements SceneBorderTouchin
     public void setPowerUp(IPowerUp powerUp) {
         powerUp.activatePowerUp(this);
     }
+
+    public void setLives(byte lives) {
+        this.lives = lives;
+    }
+
+    public byte getLives() {
+        return lives;
+    }
 }
