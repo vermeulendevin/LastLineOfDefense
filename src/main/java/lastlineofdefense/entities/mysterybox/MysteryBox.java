@@ -47,7 +47,17 @@ public class MysteryBox extends DynamicCompositeEntity implements Newtonian, Sce
     }
 
     public void chooseRandomPowerUp() {
-        powerUp = powerUps.get(new Random().nextInt(powerUps.size()));
+        int chance = new Random().nextInt(100);
+
+        if(chance < 50) {
+            powerUp = new DoubleTap();  // 50%
+        } else if(chance < 70) {
+            powerUp = new FullAuto();   // 20%
+        } else if(chance < 90) {
+            powerUp = new DoublePoints();   // 20%
+        } else {
+            powerUp = new PlusOneLife();   // 10%
+        }
     }
 
     public IPowerUp getPowerUp() {
