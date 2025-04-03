@@ -56,7 +56,7 @@ public class Gamescreen extends DynamicScene implements UpdateExposer {
         );
         addEntity(soldierGrid);
 
-        var mysterybox = new MysteryBox(new Coordinate2D(200, getHeight() / 10 * 8));
+        var mysterybox = new MysteryBox(score, new Coordinate2D(200, getHeight() / 10 * 8));
         addEntity(mysterybox);
 
 

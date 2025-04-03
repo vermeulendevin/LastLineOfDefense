@@ -7,19 +7,22 @@ import com.github.hanyaeger.api.entities.SceneBorderTouchingWatcher;
 import com.github.hanyaeger.api.scenes.SceneBorder;
 import lastlineofdefense.entities.player.Player;
 import lastlineofdefense.entities.powerup.*;
+import lastlineofdefense.hud.scoreboard.Scoreboard;
 
 import java.util.List;
 import java.util.Random;
 
 public class MysteryBox extends DynamicCompositeEntity implements Newtonian, SceneBorderTouchingWatcher {
 
-    private final List<IPowerUp> powerUps = List.of(new FullAuto(), new DoubleTap(), new PlusOneLife(), new DoublePoints());
-
     private IPowerUp powerUp;
     private Player player;
+    private  Scoreboard scoreboard;
 
-    public MysteryBox(Coordinate2D initialLocation) {
+    private final List<IPowerUp> powerUps = List.of(new FullAuto(), new DoubleTap(), new PlusOneLife(), new DoublePoints(scoreboard));
+
+    public MysteryBox(Scoreboard scoreboard, Coordinate2D initialLocation) {
         super(initialLocation);
+        this.scoreboard = scoreboard;
         setGravityConstant(0);
         setFrictionConstant(0.05);
         chooseRandomPowerUp();
