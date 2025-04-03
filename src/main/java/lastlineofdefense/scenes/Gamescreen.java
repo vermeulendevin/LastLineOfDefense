@@ -1,6 +1,7 @@
 package lastlineofdefense.scenes;
 
 import com.github.hanyaeger.api.Coordinate2D;
+import com.github.hanyaeger.api.UpdateExposer;
 import com.github.hanyaeger.api.scenes.DynamicScene;
 import lastlineofdefense.LastLineOfDefenseApp;
 import lastlineofdefense.entities.bullet.Bullet;
@@ -11,9 +12,10 @@ import lastlineofdefense.entities.soldier.SoldierGrid;
 import lastlineofdefense.hud.scoreboard.Lives;
 import lastlineofdefense.hud.scoreboard.Scoreboard;
 
-public class Gamescreen extends DynamicScene {
+public class Gamescreen extends DynamicScene implements UpdateExposer {
     private LastLineOfDefenseApp app;
     private Player player;
+    private SoldierGrid soldierGrid;
 
     private int nrOfBunkers = 4;
 
@@ -33,7 +35,14 @@ public class Gamescreen extends DynamicScene {
         player = new Player(app, this, new Coordinate2D(getWidth() / 2, getHeight() / 10 * 8));
         addEntity(player);
 
-        SoldierGrid soldierGrid = new SoldierGrid(3, 10, new Coordinate2D(100, getHeight() / 10 * 2), 80, 75);
+        soldierGrid = new SoldierGrid(
+                3,
+                10,
+                new Coordinate2D(100, getHeight() / 10 * 1),
+                80,
+                75,
+                getWidth()
+        );
         addEntity(soldierGrid);
 
         var Score = new Scoreboard(new Coordinate2D(30, 15));
@@ -60,6 +69,11 @@ public class Gamescreen extends DynamicScene {
         for(int i = 0; i < nrOfBunkers; i++) {
             addEntity(new Bunker(new Coordinate2D(150 + i * 300, getHeight() / 10 * 6.5)));
         }
+    }
+
+    @Override
+    public void explicitUpdate(long timestamp) {
+        soldierGrid.update();
     }
 
     public void createBullet() {

@@ -1,6 +1,7 @@
 package lastlineofdefense.entities.soldier;
 
 import com.github.hanyaeger.api.Coordinate2D;
+import com.github.hanyaeger.api.UpdateExposer;
 import com.github.hanyaeger.api.entities.DynamicCompositeEntity;
 
 public class SoldierGrid extends DynamicCompositeEntity {
@@ -8,13 +9,18 @@ public class SoldierGrid extends DynamicCompositeEntity {
     private int cols;
     private int spacingX;
     private int spacingY;
+    private double speed = 0.5;
+    private boolean movingRight = true;
 
-    public SoldierGrid(int rows, int cols, Coordinate2D initialLocation, int spacingX, int spacingY) {
+    private double gameWidth;
+
+    public SoldierGrid(int rows, int cols, Coordinate2D initialLocation, int spacingX, int spacingY, double gameWidth) {
         super(initialLocation);
         this.rows = rows;
         this.cols = cols;
         this.spacingX = spacingX;
         this.spacingY = spacingY;
+        this.gameWidth = gameWidth;
     }
 
     @Override
@@ -27,5 +33,25 @@ public class SoldierGrid extends DynamicCompositeEntity {
                 addEntity(soldier);
             }
         }
+    }
+
+    public void update() {
+        double dx = movingRight ? speed : -speed;
+        setAnchorLocation(new Coordinate2D(getAnchorLocation().getX() + dx, getAnchorLocation().getY()));
+
+        double gridRightEdge = getAnchorLocation().getX() + (cols - 1) * spacingX;
+        double gridLeftEdge = getAnchorLocation().getX();
+
+        if (movingRight && gridRightEdge >= gameWidth - spacingX) {
+            moveDown();
+            movingRight = false;
+        } else if (!movingRight && gridLeftEdge <= 0) {
+            moveDown();
+            movingRight = true;
+        }
+    }
+
+    private void moveDown() {
+        setAnchorLocation(new Coordinate2D(getAnchorLocation().getX(), getAnchorLocation().getY() + spacingY - 25));
     }
 }
