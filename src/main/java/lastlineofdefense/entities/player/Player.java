@@ -19,6 +19,9 @@ public class Player extends DynamicCompositeEntity implements SceneBorderTouchin
     private Gamescreen gamescreen;
     private byte lives = 3;
 
+    private long lastShotTime = 0;
+    private long shootCooldown = 500;
+
     public Player(LastLineOfDefenseApp app, Gamescreen gamescreen, Coordinate2D initialLocation) {
         super(initialLocation);
         this.app = app;
@@ -62,8 +65,11 @@ public class Player extends DynamicCompositeEntity implements SceneBorderTouchin
         } else if(pressedKeys.contains(KeyCode.D)){
             setMotion(5,90d);
         } else if(pressedKeys.contains(KeyCode.ENTER)) {
-            shoot();
-            System.out.println("Shoot");
+            long currentTime = System.currentTimeMillis();
+            if(currentTime - lastShotTime >= shootCooldown) {
+                shoot();
+                lastShotTime = currentTime;
+            }
         }
     }
 
