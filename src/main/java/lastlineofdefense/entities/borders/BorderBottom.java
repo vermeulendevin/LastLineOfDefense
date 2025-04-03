@@ -9,7 +9,7 @@ public class BorderBottom extends RectangleEntity implements Collider {
 
     public BorderBottom(Coordinate2D initialLocation) {
         super(initialLocation);
-        setHeight(10);
+        setHeight(5);
         setFill(Color.TRANSPARENT);
     }
 }
