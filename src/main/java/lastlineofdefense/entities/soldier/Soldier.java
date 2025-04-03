@@ -6,20 +6,20 @@ import com.github.hanyaeger.api.entities.impl.SpriteEntity;
 import lastlineofdefense.LastLineOfDefenseApp;
 import lastlineofdefense.entities.player.PlayerHitbox;
 import lastlineofdefense.entities.player.PlayerSprite;
+import lastlineofdefense.hud.scoreboard.Scoreboard;
 
 public class Soldier extends DynamicCompositeEntity {
-    private LastLineOfDefenseApp app;
+    private Scoreboard scoreboard;
 
-    public Soldier(Coordinate2D initialLocation) {
+    public Soldier(Scoreboard scoreboard, Coordinate2D initialLocation) {
         super(initialLocation);
-        this.app = app;
-
+        this.scoreboard = scoreboard;
     }
 
     @Override
     protected void setupEntities() {
         final SoldierSprite soldierSprite = new SoldierSprite(new Coordinate2D(0, 0));
-        final SoldierHitbox soldierHitbox = new SoldierHitbox(new Coordinate2D(0, 0));
+        final SoldierHitbox soldierHitbox = new SoldierHitbox(scoreboard, new Coordinate2D(0, 0));
         addEntity(soldierSprite);
         addEntity(soldierHitbox);
     }

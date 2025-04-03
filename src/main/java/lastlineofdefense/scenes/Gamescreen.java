@@ -16,6 +16,8 @@ public class Gamescreen extends DynamicScene implements UpdateExposer {
     private LastLineOfDefenseApp app;
     private Player player;
     private SoldierGrid soldierGrid;
+    private Scoreboard score;
+    private Scoreboard highScore;
 
     private int nrOfBunkers = 4;
 
@@ -35,7 +37,16 @@ public class Gamescreen extends DynamicScene implements UpdateExposer {
         player = new Player(app, this, new Coordinate2D(getWidth() / 2, getHeight() / 10 * 8));
         addEntity(player);
 
+        score = new Scoreboard(new Coordinate2D(30, 15));
+        score.displayScore();
+        addEntity(score);
+
+        highScore = new Scoreboard(new Coordinate2D(getWidth() - 225, 15));
+        highScore.displayHighScore();
+        addEntity(highScore);
+
         soldierGrid = new SoldierGrid(
+                score,
                 3,
                 10,
                 new Coordinate2D(100, getHeight() / 10 * 1),
@@ -44,14 +55,6 @@ public class Gamescreen extends DynamicScene implements UpdateExposer {
                 getWidth()
         );
         addEntity(soldierGrid);
-
-        var Score = new Scoreboard(new Coordinate2D(30, 15));
-        Score.displayScore();
-        addEntity(Score);
-
-        var HighScore = new Scoreboard(new Coordinate2D(getWidth() - 225, 15));
-        HighScore.displayHighScore();
-        addEntity(HighScore);
 
         var mysterybox = new MysteryBox(new Coordinate2D(200, getHeight() / 10 * 8));
         addEntity(mysterybox);
