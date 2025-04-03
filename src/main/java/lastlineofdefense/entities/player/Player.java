@@ -48,7 +48,7 @@ public class Player extends DynamicCompositeEntity implements SceneBorderTouchin
 
         switch(border) {
             case LEFT:
-                setAnchorLocationX(1);
+                setAnchorLocationX(getWidth() / 2);
                 break;
             case RIGHT:
                 setAnchorLocationX(getSceneWidth() - getWidth() - 1);
