@@ -82,7 +82,7 @@ public class Gamescreen extends DynamicScene implements UpdateExposer {
     }
 
     public void createMysteryBox(Coordinate2D location) {
-        MysteryBox mysterybox = new MysteryBox(location);
+        MysteryBox mysterybox = new MysteryBox(score, location);
         addEntity(mysterybox);
     }
 }
