@@ -13,12 +13,12 @@ public class DoublePoints implements IPowerUp{
 
     @Override
     public void activatePowerUp(Player player) {
-        Scoreboard.setDoublePoints(true);
+        scoreboard.setDoublePoints(true);
         System.out.println("Double points activated!");
     }
 
     @Override
     public void deactivatePowerUp(Player player) {
-        Scoreboard.setDoublePoints(false);
+        scoreboard.setDoublePoints(false);
     }
 }
