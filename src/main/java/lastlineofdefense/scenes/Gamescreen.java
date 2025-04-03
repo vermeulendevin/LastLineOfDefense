@@ -63,7 +63,7 @@ public class Gamescreen extends DynamicScene implements UpdateExposer {
         int LivesStartX = 30;
         double LivesY = getHeight()-55;
         int LivesSpacing = 40;
-        int numberOfLives = 3;      //TODO: change to Player.getLives()
+        int numberOfLives = player.getLives();
         for (int i = 0; i < numberOfLives; i++) {
             int livesX = LivesStartX + (i * LivesSpacing);
             addEntity(new Lives(new Coordinate2D(livesX, LivesY)));

@@ -7,7 +7,6 @@ import com.github.hanyaeger.api.entities.Newtonian;
 import com.github.hanyaeger.api.entities.SceneBorderTouchingWatcher;
 import com.github.hanyaeger.api.scenes.SceneBorder;
 import com.github.hanyaeger.api.userinput.KeyListener;
-import com.github.hanyaeger.api.Timer;
 import javafx.scene.input.KeyCode;
 import lastlineofdefense.LastLineOfDefenseApp;
 import lastlineofdefense.entities.powerup.IPowerUp;
@@ -87,7 +86,19 @@ public class Player extends DynamicCompositeEntity implements SceneBorderTouchin
         this.fireRate = i;
     }
 
+    public int getFireRate() {
+        return fireRate;
+    }
+
     public void setPowerUp(IPowerUp powerUp) {
         powerUp.activatePowerUp(this);
+    }
+
+    public void setLives(byte lives) {
+        this.lives = lives;
+    }
+
+    public byte getLives() {
+        return lives;
     }
 }
