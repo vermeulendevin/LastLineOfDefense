@@ -6,6 +6,7 @@ import com.github.hanyaeger.api.entities.Collider;
 import com.github.hanyaeger.api.entities.impl.RectangleEntity;
 import javafx.scene.paint.Color;
 import lastlineofdefense.entities.player.Player;
+import lastlineofdefense.entities.player.PlayerHitbox;
 
 import java.util.List;
 
@@ -24,7 +25,8 @@ public class MysteryBoxHitbox extends RectangleEntity implements Collided {
     @Override
     public void onCollision(List<Collider> collidingObject) {
         for(Collider collider : collidingObject) {
-            if(collider instanceof Player player) {
+            if(collider instanceof PlayerHitbox playerHitbox) {
+                Player player = playerHitbox.getPLayer();
                 mysteryBox.activateRandomPowerUp(player);
             }
         }

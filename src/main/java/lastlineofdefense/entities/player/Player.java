@@ -33,7 +33,7 @@ public class Player extends DynamicCompositeEntity implements SceneBorderTouchin
     @Override
     protected void setupEntities() {
         final PlayerSprite playerSprite = new PlayerSprite(new Coordinate2D(0, 0));
-        final PlayerHitbox playerHitbox = new PlayerHitbox(new Coordinate2D(0, 0));
+        final PlayerHitbox playerHitbox = new PlayerHitbox(this, new Coordinate2D(0, 0));
 
         playerSprite.setAnchorPoint(AnchorPoint.CENTER_CENTER);
         playerHitbox.setAnchorPoint(AnchorPoint.CENTER_CENTER);

@@ -9,11 +9,19 @@ import javafx.scene.paint.Color;
 import java.util.List;
 
 public class PlayerHitbox extends RectangleEntity implements Collided, Collider {
-    protected PlayerHitbox(Coordinate2D initialLocation) {
+
+    private final Player player;
+
+    protected PlayerHitbox(Player player, Coordinate2D initialLocation) {
         super(initialLocation);
+        this.player = player;
         setWidth(50);
         setHeight(50);
         setFill(Color.TRANSPARENT);
+    }
+
+    public Player getPLayer() {
+        return player;
     }
 
     @Override
