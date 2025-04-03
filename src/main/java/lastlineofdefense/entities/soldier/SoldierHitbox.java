@@ -11,11 +11,12 @@ import lastlineofdefense.hud.scoreboard.Scoreboard;
 import java.util.List;
 
 public class SoldierHitbox extends RectangleEntity implements Collided {
-
+    private Soldier soldier;
     private Scoreboard scoreboard;
 
-    protected SoldierHitbox(Scoreboard scoreboard, Coordinate2D initialLocation) {
+    protected SoldierHitbox(Soldier soldier, Scoreboard scoreboard, Coordinate2D initialLocation) {
         super(initialLocation);
+        this.soldier = soldier;
         this.scoreboard = scoreboard;
         setWidth(50);
         setHeight(50);
@@ -27,6 +28,7 @@ public class SoldierHitbox extends RectangleEntity implements Collided {
         for (Collider collider : collidingObject) {
             if (collider instanceof Bullet) {
                 scoreboard.setCurrentScore(15);
+                soldier.dropMysteryBox();
                 System.out.println(scoreboard.getCurrentScore());
                 ((Bullet) collider).remove();
                 remove();
