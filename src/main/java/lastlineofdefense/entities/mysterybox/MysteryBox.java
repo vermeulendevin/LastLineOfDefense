@@ -24,7 +24,7 @@ public class MysteryBox extends DynamicCompositeEntity implements Newtonian, Sce
         super(initialLocation);
         this.scoreboard = scoreboard;
         setGravityConstant(0.3);
-        setFrictionConstant(0.05);
+        setFrictionConstant(0.10);
         chooseRandomPowerUp();
     }
 
@@ -42,6 +42,7 @@ public class MysteryBox extends DynamicCompositeEntity implements Newtonian, Sce
 
         switch(border) {
             case BOTTOM:
+                setGravityConstant(0);
                 setAnchorLocationY(getSceneHeight() - getHeight() - 1);
                 break;
             default:
