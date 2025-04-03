@@ -2,17 +2,16 @@ package lastlineofdefense.entities.player;
 
 import com.github.hanyaeger.api.AnchorPoint;
 import com.github.hanyaeger.api.Coordinate2D;
-import com.github.hanyaeger.api.TimerContainer;
 import com.github.hanyaeger.api.entities.DynamicCompositeEntity;
 import com.github.hanyaeger.api.entities.Newtonian;
 import com.github.hanyaeger.api.entities.SceneBorderTouchingWatcher;
 import com.github.hanyaeger.api.scenes.SceneBorder;
 import com.github.hanyaeger.api.userinput.KeyListener;
+import com.github.hanyaeger.api.Timer;
 import javafx.scene.input.KeyCode;
 import lastlineofdefense.LastLineOfDefenseApp;
 import lastlineofdefense.entities.powerup.IPowerUp;
 import lastlineofdefense.scenes.Gamescreen;
-import lastlineofdefense.timers.PowerUpTimer;
 
 import java.util.Set;
 
