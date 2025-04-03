@@ -12,7 +12,7 @@ import java.util.List;
 
 public class MysteryBoxHitbox extends RectangleEntity implements Collided {
 
-    MysteryBox mysteryBox;
+    private MysteryBox mysteryBox;
 
     protected MysteryBoxHitbox(MysteryBox mysteryBox, Coordinate2D initialLocation) {
         super(initialLocation);
@@ -27,7 +27,7 @@ public class MysteryBoxHitbox extends RectangleEntity implements Collided {
         for(Collider collider : collidingObject) {
             if(collider instanceof PlayerHitbox playerHitbox) {
                 Player player = playerHitbox.getPlayer();
-
+                player.setPowerUp(mysteryBox.getPowerUp());
                 mysteryBox.removeMysteryBox();
             }
         }
