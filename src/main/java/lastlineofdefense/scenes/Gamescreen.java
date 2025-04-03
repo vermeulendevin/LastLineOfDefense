@@ -2,8 +2,10 @@ package lastlineofdefense.scenes;
 
 import com.github.hanyaeger.api.Coordinate2D;
 import com.github.hanyaeger.api.UpdateExposer;
+import com.github.hanyaeger.api.entities.impl.RectangleEntity;
 import com.github.hanyaeger.api.scenes.DynamicScene;
 import lastlineofdefense.LastLineOfDefenseApp;
+import lastlineofdefense.entities.borders.BorderBottom;
 import lastlineofdefense.entities.bullet.Bullet;
 import lastlineofdefense.entities.bunker.Bunker;
 import lastlineofdefense.entities.mysterybox.MysteryBox;
@@ -69,6 +71,10 @@ public class Gamescreen extends DynamicScene implements UpdateExposer {
         for(int i = 0; i < nrOfBunkers; i++) {
             addEntity(new Bunker(new Coordinate2D(150 + i * 300, getHeight() / 10 * 6.5)));
         }
+
+        var borderBottom = new BorderBottom(new Coordinate2D(0, getHeight() - 125));
+        borderBottom.setWidth(getWidth());
+        addEntity(borderBottom);
     }
 
     @Override

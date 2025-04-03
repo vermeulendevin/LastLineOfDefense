@@ -5,6 +5,7 @@ import com.github.hanyaeger.api.entities.Collided;
 import com.github.hanyaeger.api.entities.Collider;
 import com.github.hanyaeger.api.entities.impl.RectangleEntity;
 import javafx.scene.paint.Color;
+import lastlineofdefense.entities.borders.BorderBottom;
 import lastlineofdefense.entities.player.Player;
 import lastlineofdefense.entities.player.PlayerHitbox;
 
@@ -29,6 +30,8 @@ public class MysteryBoxHitbox extends RectangleEntity implements Collided {
                 Player player = playerHitbox.getPlayer();
                 player.setPowerUp(mysteryBox.getPowerUp());
                 mysteryBox.removeMysteryBox();
+            } else if(collider instanceof BorderBottom) {
+                mysteryBox.setGravityConstant(0);
             }
         }
     }
