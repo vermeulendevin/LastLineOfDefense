@@ -5,6 +5,7 @@ import com.github.hanyaeger.api.scenes.DynamicScene;
 import lastlineofdefense.LastLineOfDefenseApp;
 import lastlineofdefense.entities.bullet.Bullet;
 import lastlineofdefense.entities.bunker.Bunker;
+import lastlineofdefense.entities.mysterybox.MysteryBox;
 import lastlineofdefense.entities.player.Player;
 import lastlineofdefense.hud.scoreboard.Lives;
 import lastlineofdefense.hud.scoreboard.Scoreboard;
@@ -38,6 +39,9 @@ public class Gamescreen extends DynamicScene {
         var HighScore = new Scoreboard(new Coordinate2D(getWidth() - 225, 15));
         HighScore.displayHighScore();
         addEntity(HighScore);
+
+        var mysterybox = new MysteryBox(new Coordinate2D(200, getHeight() / 10 * 8));
+        addEntity(mysterybox);
 
 
         int LivesStartX = 30;

@@ -8,7 +8,7 @@ import javafx.scene.paint.Color;
 
 import java.util.List;
 
-public class PlayerHitbox extends RectangleEntity implements Collided {
+public class PlayerHitbox extends RectangleEntity implements Collided, Collider {
     protected PlayerHitbox(Coordinate2D initialLocation) {
         super(initialLocation);
         setWidth(50);
