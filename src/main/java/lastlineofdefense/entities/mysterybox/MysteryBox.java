@@ -20,7 +20,7 @@ public class MysteryBox extends DynamicCompositeEntity implements Newtonian, Sce
 
     public MysteryBox(Coordinate2D initialLocation) {
         super(initialLocation);
-        setGravityConstant(0);
+        setGravityConstant(0.3);
         setFrictionConstant(0.05);
         chooseRandomPowerUp();
     }

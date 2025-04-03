@@ -57,10 +57,6 @@ public class Gamescreen extends DynamicScene implements UpdateExposer {
         );
         addEntity(soldierGrid);
 
-        var mysterybox = new MysteryBox(new Coordinate2D(200, getHeight() / 10 * 8));
-        addEntity(mysterybox);
-
-
         int LivesStartX = 30;
         double LivesY = getHeight()-55;
         int LivesSpacing = 40;
