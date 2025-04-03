@@ -35,7 +35,7 @@ public class SoldierGrid extends DynamicCompositeEntity {
             for (int col = 0; col < cols; col++) {
                 int x = col * spacingX;
                 int y = row * spacingY;
-                Soldier soldier = new Soldier(scoreboard, gamescreen, new Coordinate2D(x, y));
+                Soldier soldier = new Soldier(scoreboard, gamescreen, this, new Coordinate2D(x, y));
                 addEntity(soldier);
             }
         }
@@ -59,5 +59,9 @@ public class SoldierGrid extends DynamicCompositeEntity {
 
     private void moveDown() {
         setAnchorLocation(new Coordinate2D(getAnchorLocation().getX(), getAnchorLocation().getY() + spacingY - 25));
+    }
+
+    public Coordinate2D getGridPosition() {
+        return new Coordinate2D(getAnchorLocation());
     }
 }

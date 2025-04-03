@@ -14,11 +14,13 @@ import java.util.Random;
 public class Soldier extends DynamicCompositeEntity {
     private Scoreboard scoreboard;
     private Gamescreen gamescreen;
+    private SoldierGrid soldierGrid;
 
-    public Soldier(Scoreboard scoreboard, Gamescreen gamescreen, Coordinate2D initialLocation) {
+    public Soldier(Scoreboard scoreboard, Gamescreen gamescreen, SoldierGrid soldierGrid, Coordinate2D initialLocation) {
         super(initialLocation);
         this.scoreboard = scoreboard;
         this.gamescreen = gamescreen;
+        this.soldierGrid = soldierGrid;
     }
 
     @Override
@@ -32,7 +34,15 @@ public class Soldier extends DynamicCompositeEntity {
     public void dropMysteryBox() {
         Random random = new Random();
         if(random.nextDouble() < 0.25) {
-            gamescreen.createMysteryBox(getAnchorLocation());
+            Coordinate2D gridPosition = soldierGrid.getGridPosition();
+            Coordinate2D localPosition = getAnchorLocation();
+
+            Coordinate2D absolutePosition = new Coordinate2D(
+                    gridPosition.getX() + localPosition.getX(),
+                    gridPosition.getY() + localPosition.getY()
+            );
+
+            gamescreen.createMysteryBox(absolutePosition);
         }
     }
 }
