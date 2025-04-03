@@ -23,6 +23,7 @@ public class MysteryBox extends DynamicCompositeEntity implements Newtonian, Sce
         super(initialLocation);
         setGravityConstant(0);
         setFrictionConstant(0.05);
+        chooseRandomPowerUp();
     }
 
     @Override
@@ -44,6 +45,14 @@ public class MysteryBox extends DynamicCompositeEntity implements Newtonian, Sce
             default:
                 break;
         }
+    }
+
+    public void chooseRandomPowerUp() {
+        powerUp = powerUps.get(new Random().nextInt(powerUps.size()));
+    }
+
+    public IPowerUp getPowerUp() {
+        return powerUp;
     }
 
     public void removeMysteryBox() {
