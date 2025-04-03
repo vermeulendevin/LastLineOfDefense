@@ -20,7 +20,7 @@ public class Player extends DynamicCompositeEntity implements SceneBorderTouchin
     private byte lives = 3;
 
     private long lastShotTime = 0;
-    private long shootCooldown = 500;
+    private int shootCooldown = 500;
 
     public Player(LastLineOfDefenseApp app, Gamescreen gamescreen, Coordinate2D initialLocation) {
         super(initialLocation);
@@ -79,5 +79,13 @@ public class Player extends DynamicCompositeEntity implements SceneBorderTouchin
 
     public double getX() {
         return getAnchorLocation().getX() + getWidth() / 2;
+    }
+
+    public void setShootCooldown(int i) {
+        this.shootCooldown = i;
+    }
+
+    public int getShootCooldown() {
+        return shootCooldown;
     }
 }
