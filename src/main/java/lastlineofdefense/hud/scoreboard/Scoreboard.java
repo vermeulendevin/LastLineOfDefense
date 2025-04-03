@@ -10,6 +10,7 @@ import javafx.scene.text.FontWeight;
 public class Scoreboard extends TextEntity {
     private int currentScore = 0;
     private int highScore = 0;
+    private boolean doublePoints = false;
 
     public Scoreboard(Coordinate2D location) {
         super(location);
@@ -33,11 +34,18 @@ public class Scoreboard extends TextEntity {
     }
 
     public void setCurrentScore (int points){
+        if (doublePoints == true) {
+            points = points * 2;
+        }
         currentScore = currentScore + points;
         updateScore();
     }
 
     public void updateScore() {
         displayScore();
+    }
+
+    public void setDoublePoints (boolean doublePoints) {
+        this.doublePoints = doublePoints;
     }
 }
