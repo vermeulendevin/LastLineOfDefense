@@ -1,6 +1,7 @@
 package lastlineofdefense.scenes;
 
 import com.github.hanyaeger.api.Coordinate2D;
+import com.github.hanyaeger.api.TimerContainer;
 import com.github.hanyaeger.api.scenes.DynamicScene;
 import lastlineofdefense.LastLineOfDefenseApp;
 import lastlineofdefense.entities.bullet.Bullet;
@@ -9,6 +10,7 @@ import lastlineofdefense.entities.mysterybox.MysteryBox;
 import lastlineofdefense.entities.player.Player;
 import lastlineofdefense.hud.scoreboard.Lives;
 import lastlineofdefense.hud.scoreboard.Scoreboard;
+import lastlineofdefense.timers.PowerUpTimer;
 
 public class Gamescreen extends DynamicScene {
     private LastLineOfDefenseApp app;

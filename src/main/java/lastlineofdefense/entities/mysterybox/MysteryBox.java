@@ -16,10 +16,14 @@ public class MysteryBox extends DynamicCompositeEntity implements Newtonian, Sce
 
     private final List<IPowerUp> powerUps = List.of(new FullAuto());
 
+    private IPowerUp powerUp;
+    private Player player;
+
     public MysteryBox(Coordinate2D initialLocation) {
         super(initialLocation);
         setGravityConstant(0);
         setFrictionConstant(0.05);
+        chooseRandomPowerUp();
     }
 
     @Override
@@ -43,9 +47,12 @@ public class MysteryBox extends DynamicCompositeEntity implements Newtonian, Sce
         }
     }
 
-    public void activateRandomPowerUp(Player player) {
-        IPowerUp chosenPowerUp = powerUps.get(new Random().nextInt(powerUps.size()));
-        chosenPowerUp.activatePowerUp(player);
+    public void chooseRandomPowerUp() {
+        powerUp = powerUps.get(new Random().nextInt(powerUps.size()));
+    }
+
+    public IPowerUp getPowerUp() {
+        return powerUp;
     }
 
     public void removeMysteryBox() {
