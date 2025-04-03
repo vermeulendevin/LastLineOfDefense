@@ -7,6 +7,7 @@ import lastlineofdefense.entities.bullet.Bullet;
 import lastlineofdefense.entities.bunker.Bunker;
 import lastlineofdefense.entities.mysterybox.MysteryBox;
 import lastlineofdefense.entities.player.Player;
+import lastlineofdefense.entities.soldier.SoldierGrid;
 import lastlineofdefense.hud.scoreboard.Lives;
 import lastlineofdefense.hud.scoreboard.Scoreboard;
 
@@ -31,6 +32,9 @@ public class Gamescreen extends DynamicScene {
 
         player = new Player(app, this, new Coordinate2D(getWidth() / 2, getHeight() / 10 * 8));
         addEntity(player);
+
+        SoldierGrid soldierGrid = new SoldierGrid(3, 10, new Coordinate2D(100, getHeight() / 10 * 2), 80, 75);
+        addEntity(soldierGrid);
 
         var Score = new Scoreboard(new Coordinate2D(30, 15));
         Score.displayScore();
