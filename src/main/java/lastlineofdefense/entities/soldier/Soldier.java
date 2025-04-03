@@ -24,7 +24,7 @@ public class Soldier extends DynamicCompositeEntity {
     @Override
     protected void setupEntities() {
         final SoldierSprite soldierSprite = new SoldierSprite(new Coordinate2D(0, 0));
-        final SoldierHitbox soldierHitbox = new SoldierHitbox(scoreboard, new Coordinate2D(0, 0));
+        final SoldierHitbox soldierHitbox = new SoldierHitbox(this, scoreboard, new Coordinate2D(0, 0));
         addEntity(soldierSprite);
         addEntity(soldierHitbox);
     }
