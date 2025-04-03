@@ -47,6 +47,7 @@ public class Gamescreen extends DynamicScene implements UpdateExposer {
 
         soldierGrid = new SoldierGrid(
                 score,
+                this,
                 3,
                 10,
                 new Coordinate2D(100, getHeight() / 10 * 1),
@@ -82,5 +83,10 @@ public class Gamescreen extends DynamicScene implements UpdateExposer {
     public void createBullet() {
         Bullet bullet = new Bullet(new Coordinate2D(player.getX(), getHeight() / 10 * 8.5), 180d);
         addEntity(bullet);
+    }
+
+    public void createMysteryBox(Coordinate2D location) {
+        MysteryBox mysterybox = new MysteryBox(location);
+        addEntity(mysterybox);
     }
 }

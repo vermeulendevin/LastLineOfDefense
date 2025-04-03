@@ -7,13 +7,18 @@ import lastlineofdefense.LastLineOfDefenseApp;
 import lastlineofdefense.entities.player.PlayerHitbox;
 import lastlineofdefense.entities.player.PlayerSprite;
 import lastlineofdefense.hud.scoreboard.Scoreboard;
+import lastlineofdefense.scenes.Gamescreen;
+
+import java.util.Random;
 
 public class Soldier extends DynamicCompositeEntity {
     private Scoreboard scoreboard;
+    private Gamescreen gamescreen;
 
-    public Soldier(Scoreboard scoreboard, Coordinate2D initialLocation) {
+    public Soldier(Scoreboard scoreboard, Gamescreen gamescreen, Coordinate2D initialLocation) {
         super(initialLocation);
         this.scoreboard = scoreboard;
+        this.gamescreen = gamescreen;
     }
 
     @Override
@@ -24,5 +29,10 @@ public class Soldier extends DynamicCompositeEntity {
         addEntity(soldierHitbox);
     }
 
-
+    public void dropMysteryBox() {
+        Random random = new Random();
+        if(random.nextDouble() < 0.25) {
+            gamescreen.createMysteryBox(getAnchorLocation());
+        }
+    }
 }
