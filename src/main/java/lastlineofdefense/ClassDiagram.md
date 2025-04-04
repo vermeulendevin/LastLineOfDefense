@@ -388,83 +388,83 @@ DynamicCompositeEntity <|--- Player
 
 DynamicRectangleEntity <|--- Bullet
 
-LastLineOfDefenseApp "1" ---> "1" StartScreen
-LastLineOfDefenseApp "1" ---> "1" Pausescreen
-LastLineOfDefenseApp "1" ---> "1" Endscreen
-LastLineOfDefenseApp "1" ---> "1" Gamescreen
+LastLineOfDefenseApp "1" ---> "1" StartScreen : heeft
+LastLineOfDefenseApp "1" ---> "1" Pausescreen : heeft
+LastLineOfDefenseApp "1" ---> "1" Endscreen : heeft
+LastLineOfDefenseApp "1" ---> "1" Gamescreen : heeft
 
-StartScreen "1" ---> "1" PlayButton
-StartScreen "1" ---> "1" QuitButton
-StartScreen "1" ---> "1" LastLineOfDefenseApp
+StartScreen "1" ---> "1" PlayButton : heeft
+StartScreen "1" ---> "1" QuitButton : heeft
+StartScreen "1" ---> "1" LastLineOfDefenseApp : heeft
 
-Pausescreen "1" ---> "1" LastLineOfDefenseApp
-Pausescreen "1" ---> "1" PlayButton
-Pausescreen "1" ---> "1" QuitButton
+Pausescreen "1" ---> "1" LastLineOfDefenseApp : heeft
+Pausescreen "1" ---> "1" PlayButton : heeft
+Pausescreen "1" ---> "1" QuitButton : heeft
 
-Gamescreen "1" ---> "1" LastLineOfDefenseApp
-Gamescreen "1" ---> "1" Player
-Gamescreen "1" ---> "1" SoldierGrid
-Gamescreen "1" ---> "1.." Scoreboard
-Gamescreen "1" ---> "1" Bunker
-Gamescreen "1" ---> "1" Bullet
-Gamescreen "1" ---> "1" MysteryBox
-Gamescreen "1" ---> "1.." Lives
+Gamescreen "1" ---> "1" LastLineOfDefenseApp : heeft
+Gamescreen "1" ---> "1" Player : heeft
+Gamescreen "1" ---> "1" SoldierGrid : heeft
+Gamescreen "1" ---> "1.." Scoreboard : heeft
+Gamescreen "1" ---> "1" Bunker : heeft
+Gamescreen "1" ---> "1" Bullet : heeft
+Gamescreen "1" ---> "1" MysteryBox : heeft
+Gamescreen "1" ---> "1.." Lives : heeft
 
-Endscreen "1" ---> "1" LastLineOfDefenseApp
-Endscreen "1" ---> "1" PlayButton
-Endscreen "1" ---> "1" QuitButton
+Endscreen "1" ---> "1" LastLineOfDefenseApp : heeft
+Endscreen "1" ---> "1" PlayButton : heeft
+Endscreen "1" ---> "1" QuitButton : heeft
 
-PowerUpBox "1" ---> "1" DoublePointsSprite
-PowerUpBox "1" ---> "1" DoubleTapSprite
-PowerUpBox "1" ---> "1" FullAutoSprite
+PowerUpBox "1" ---> "1" DoublePointsSprite : heeft
+PowerUpBox "1" ---> "1" DoubleTapSprite : heeft
+PowerUpBox "1" ---> "1" FullAutoSprite : heeft
 
-SoldierHitbox "1" ---> "1" Soldier
-SoldierHitbox "1" ---> "1" Scoreboard
+SoldierHitbox "1" ---> "1" Soldier : heeft
+SoldierHitbox "1" ---> "1" Scoreboard : heeft
 
-SoldierGrid "1" ---> "1.." Soldier
-SoldierGrid "1" ---> "1" Scoreboard
-SoldierGrid "1" ---> "1" Gamescreen
+SoldierGrid "1" ---> "1.." Soldier : heeft
+SoldierGrid "1" ---> "1" Scoreboard : heeft
+SoldierGrid "1" ---> "1" Gamescreen : heeft
 
-Soldier "1" ---> "1" SoldierHitbox
-Soldier "1" ---> "1" SoldierGrid
-Soldier "1" ---> "1" Scoreboard
-Soldier "1" ---> "1" Gamescreen
-Soldier "1" ---> "1" MysteryBox
+Soldier "1" ---> "1" SoldierHitbox : heeft
+Soldier "1" ---> "1" SoldierGrid : heeft
+Soldier "1" ---> "1" Scoreboard : heeft
+Soldier "1" ---> "1" Gamescreen : heeft
+Soldier "1" ---> "1" MysteryBox : heeft
 
-PlusOneLife "1" ---> "1" Player
-DoublePoints "1" ---> "1" Player
-DoublePoints "1" ---> "1" Scoreboard
-DoubleTap "1" ---> "1" Player
-FullAuto "1" ---> "1" Player
+PlusOneLife "1" ---> "1" Player : heeft
+DoublePoints "1" ---> "1" Player : heeft
+DoublePoints "1" ---> "1" Scoreboard : heeft
+DoubleTap "1" ---> "1" Player : heeft
+FullAuto "1" ---> "1" Player : heeft
 
-PlayerHitbox "1" ---> "1" Player
-PlayerHitbox "1" ---> "1" LastLineOfDefenseApp
+PlayerHitbox "1" ---> "1" Player : heeft
+PlayerHitbox "1" ---> "1" LastLineOfDefenseApp : heeft
 
-Player "1" ---> "1" PlayerHitbox
-Player "1" ---> "1" PlayerSprite
-Player "1" ---> "1" LastLineOfDefenseApp
-Player "1" ---> "1" Gamescreen
+Player "1" ---> "1" PlayerHitbox : heeft
+Player "1" ---> "1" PlayerSprite : heeft
+Player "1" ---> "1" LastLineOfDefenseApp : heeft
+Player "1" ---> "1" Gamescreen : heeft
 
-MysteryBoxHitbox "1" ---> "1" MysteryBox
+MysteryBoxHitbox "1" ---> "1" MysteryBox : heeft
 
-MysteryBox "1" ---> "1" MysteryBoxHitbox
-MysteryBox "1" ---> "1" Scoreboard
-MysteryBox "1" ---> "1" Player
-MysteryBox "1" ---> "1" MysteryBoxSprite
-MysteryBox "1" ---> "1" PowerUpBox
-MysteryBox "1" ---> "1" DoublePoints
-MysteryBox "1" ---> "1" DoubleTap
-MysteryBox "1" ---> "1" FullAuto
-MysteryBox "1" ---> "1" PlusOneLife
+MysteryBox "1" ---> "1" MysteryBoxHitbox : heeft
+MysteryBox "1" ---> "1" Scoreboard : heeft
+MysteryBox "1" ---> "1" Player : heeft
+MysteryBox "1" ---> "1" MysteryBoxSprite : heeft
+MysteryBox "1" ---> "1" PowerUpBox : heeft
+MysteryBox "1" ---> "1" DoublePoints : heeft
+MysteryBox "1" ---> "1" DoubleTap : heeft
+MysteryBox "1" ---> "1" FullAuto : heeft
+MysteryBox "1" ---> "1" PlusOneLife : heeft
 
-QuitButton "1" ---> "1" LastLineOfDefenseApp
-PlayButton "1" ---> "1" LastLineOfDefenseApp
+QuitButton "1" ---> "1" LastLineOfDefenseApp : heeft
+PlayButton "1" ---> "1" LastLineOfDefenseApp : heeft
 
-BunkerHitbox "1" ---> "1" Bunker
+BunkerHitbox "1" ---> "1" Bunker : heeft
 
-Bunker "1" ---> "1" BunkerHitbox
-Bunker "1" ---> "1" BunkerSprite
+Bunker "1" ---> "1" BunkerHitbox : heeft
+Bunker "1" ---> "1" BunkerSprite : heeft
 
-Bullet "1" ---> "1" Object
+Bullet "1" ---> "1" Object : heeft
 @enduml
 ```
