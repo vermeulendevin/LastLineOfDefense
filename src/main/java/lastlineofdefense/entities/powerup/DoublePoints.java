@@ -1,13 +1,16 @@
 package lastlineofdefense.entities.powerup;
 
 import lastlineofdefense.entities.player.Player;
+import lastlineofdefense.hud.scoreboard.PowerUpBox;
 import lastlineofdefense.hud.scoreboard.Scoreboard;
 
 public class DoublePoints implements IPowerUp{
     private final Scoreboard scoreboard;
+    private final PowerUpBox powerUpBox;
 
-    public DoublePoints(Scoreboard scoreboard) {
+    public DoublePoints(Scoreboard scoreboard, PowerUpBox powerUpBox) {
         this.scoreboard = scoreboard;
+        this.powerUpBox = powerUpBox;
     }
 
 

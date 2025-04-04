@@ -9,6 +9,7 @@ import com.github.hanyaeger.api.entities.SceneBorderTouchingWatcher;
 import com.github.hanyaeger.api.scenes.SceneBorder;
 import lastlineofdefense.entities.player.Player;
 import lastlineofdefense.entities.powerup.*;
+import lastlineofdefense.hud.scoreboard.PowerUpBox;
 import lastlineofdefense.hud.scoreboard.Scoreboard;
 
 import java.util.List;
@@ -19,9 +20,11 @@ public class MysteryBox extends DynamicCompositeEntity implements Newtonian, Sce
     private IPowerUp powerUp;
     private Player player;
     private Scoreboard scoreboard;
+    private PowerUpBox powerUpBox;
 
-    public MysteryBox(Scoreboard scoreboard, Coordinate2D initialLocation) {
+    public MysteryBox(Scoreboard scoreboard, Coordinate2D initialLocation, PowerUpBox powerUpBox) {
         super(initialLocation);
+        this.powerUpBox = powerUpBox;
         this.scoreboard = scoreboard;
         setGravityConstant(0.3);
         setFrictionConstant(0.10);
@@ -49,11 +52,11 @@ public class MysteryBox extends DynamicCompositeEntity implements Newtonian, Sce
         int chance = new Random().nextInt(100);
 
         if(chance < 50) {
-            powerUp = new DoubleTap();  // 50%
+            powerUp = new DoubleTap(powerUpBox);  // 50%
         } else if(chance < 70) {
-            powerUp = new FullAuto();   // 20%
+            powerUp = new FullAuto(powerUpBox);   // 20%
         } else if(chance < 90) {
-            powerUp = new DoublePoints(scoreboard);   // 20%
+            powerUp = new DoublePoints(scoreboard, powerUpBox);   // 20%
         } else {
             powerUp = new PlusOneLife();   // 10%
         }
