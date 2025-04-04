@@ -31,7 +31,7 @@ public class SoldierHitbox extends RectangleEntity implements Collided {
                 soldier.dropMysteryBox();
                 System.out.println(scoreboard.getCurrentScore());
                 ((Bullet) collider).remove();
-                remove();
+                soldier.setAsDead();
             }
         }
     }

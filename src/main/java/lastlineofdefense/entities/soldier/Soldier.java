@@ -16,11 +16,18 @@ public class Soldier extends DynamicCompositeEntity {
     private Gamescreen gamescreen;
     private SoldierGrid soldierGrid;
 
-    public Soldier(Scoreboard scoreboard, Gamescreen gamescreen, SoldierGrid soldierGrid, Coordinate2D initialLocation) {
+    private int row;
+    private int col;
+
+    private boolean dead = false;
+
+    public Soldier(Scoreboard scoreboard, Gamescreen gamescreen, SoldierGrid soldierGrid, Coordinate2D initialLocation, int row, int col) {
         super(initialLocation);
         this.scoreboard = scoreboard;
         this.gamescreen = gamescreen;
         this.soldierGrid = soldierGrid;
+        this.row = row;
+        this.col = col;
     }
 
     @Override
@@ -52,5 +59,22 @@ public class Soldier extends DynamicCompositeEntity {
         if(random.nextDouble() < 0.25) {
             gamescreen.createMysteryBox(absolutePosition());
         }
+    }
+
+    public int getRow() {
+        return row;
+    }
+
+    public int getCol() {
+        return col;
+    }
+
+    public void setAsDead() {
+        dead = true;
+        remove();
+    }
+
+    public boolean isDead() {
+        return dead;
     }
 }
