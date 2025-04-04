@@ -5,11 +5,15 @@ import com.github.hanyaeger.api.entities.DynamicCompositeEntity;
 import lastlineofdefense.hud.scoreboard.Scoreboard;
 import lastlineofdefense.scenes.Gamescreen;
 
+import java.util.Random;
+
 public class SoldierGrid extends DynamicCompositeEntity {
     private Scoreboard scoreboard;
     private Gamescreen gamescreen;
 
     private Soldier[][] soldierGrid;
+
+    private final Random random = new Random();
 
     private int rows;
     private int cols;
@@ -85,7 +89,9 @@ public class SoldierGrid extends DynamicCompositeEntity {
                 Soldier soldier = soldierGrid[row][col];
                 if (soldier != null && !soldier.isDead()) {
                     if (isInLastRow(soldier)) {
-                        soldier.shoot();
+                        if(random.nextInt(100) == 0) {
+                            soldier.shoot();
+                        }
                     }
                 }
             }
