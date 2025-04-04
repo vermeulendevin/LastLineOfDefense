@@ -6,6 +6,6 @@ import com.github.hanyaeger.api.entities.impl.SpriteEntity;
 
 public class MysteryBoxSprite extends SpriteEntity {
     protected MysteryBoxSprite(Coordinate2D initialLocation) {
-        super("sprites/test.png", initialLocation, new Size(50, 50));
+        super("sprites/airdrop.png", initialLocation, new Size(50, 50));
     }
 }

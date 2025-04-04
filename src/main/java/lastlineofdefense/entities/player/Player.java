@@ -9,6 +9,7 @@ import com.github.hanyaeger.api.scenes.SceneBorder;
 import com.github.hanyaeger.api.userinput.KeyListener;
 import javafx.scene.input.KeyCode;
 import lastlineofdefense.LastLineOfDefenseApp;
+import lastlineofdefense.entities.powerup.IPowerUp;
 import lastlineofdefense.scenes.Gamescreen;
 
 import java.util.Set;
@@ -20,7 +21,7 @@ public class Player extends DynamicCompositeEntity implements SceneBorderTouchin
     private byte lives = 3;
 
     private long lastShotTime = 0;
-    private long shootCooldown = 500;
+    private int fireRate = 500;
 
     public Player(LastLineOfDefenseApp app, Gamescreen gamescreen, Coordinate2D initialLocation) {
         super(initialLocation);
@@ -33,7 +34,7 @@ public class Player extends DynamicCompositeEntity implements SceneBorderTouchin
     @Override
     protected void setupEntities() {
         final PlayerSprite playerSprite = new PlayerSprite(new Coordinate2D(0, 0));
-        final PlayerHitbox playerHitbox = new PlayerHitbox(new Coordinate2D(0, 0));
+        final PlayerHitbox playerHitbox = new PlayerHitbox(this, new Coordinate2D(0, 0));
 
         playerSprite.setAnchorPoint(AnchorPoint.CENTER_CENTER);
         playerHitbox.setAnchorPoint(AnchorPoint.CENTER_CENTER);
@@ -48,7 +49,7 @@ public class Player extends DynamicCompositeEntity implements SceneBorderTouchin
 
         switch(border) {
             case LEFT:
-                setAnchorLocationX(1);
+                setAnchorLocationX(getWidth() / 2);
                 break;
             case RIGHT:
                 setAnchorLocationX(getSceneWidth() - getWidth() - 1);
@@ -66,7 +67,7 @@ public class Player extends DynamicCompositeEntity implements SceneBorderTouchin
             setMotion(5,90d);
         } else if(pressedKeys.contains(KeyCode.ENTER)) {
             long currentTime = System.currentTimeMillis();
-            if(currentTime - lastShotTime >= shootCooldown) {
+            if(currentTime - lastShotTime >= fireRate) {
                 shoot();
                 lastShotTime = currentTime;
             }
@@ -79,5 +80,25 @@ public class Player extends DynamicCompositeEntity implements SceneBorderTouchin
 
     public double getX() {
         return getAnchorLocation().getX() + getWidth() / 2;
+    }
+
+    public void setFireRate(int i) {
+        this.fireRate = i;
+    }
+
+    public int getFireRate() {
+        return fireRate;
+    }
+
+    public void setPowerUp(IPowerUp powerUp) {
+        powerUp.activatePowerUp(this);
+    }
+
+    public void setLives(byte lives) {
+        this.lives = lives;
+    }
+
+    public byte getLives() {
+        return lives;
     }
 }

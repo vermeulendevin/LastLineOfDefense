@@ -1,0 +1,48 @@
+package lastlineofdefense.entities.soldier;
+
+import com.github.hanyaeger.api.Coordinate2D;
+import com.github.hanyaeger.api.entities.DynamicCompositeEntity;
+import com.github.hanyaeger.api.entities.impl.SpriteEntity;
+import lastlineofdefense.LastLineOfDefenseApp;
+import lastlineofdefense.entities.player.PlayerHitbox;
+import lastlineofdefense.entities.player.PlayerSprite;
+import lastlineofdefense.hud.scoreboard.Scoreboard;
+import lastlineofdefense.scenes.Gamescreen;
+
+import java.util.Random;
+
+public class Soldier extends DynamicCompositeEntity {
+    private Scoreboard scoreboard;
+    private Gamescreen gamescreen;
+    private SoldierGrid soldierGrid;
+
+    public Soldier(Scoreboard scoreboard, Gamescreen gamescreen, SoldierGrid soldierGrid, Coordinate2D initialLocation) {
+        super(initialLocation);
+        this.scoreboard = scoreboard;
+        this.gamescreen = gamescreen;
+        this.soldierGrid = soldierGrid;
+    }
+
+    @Override
+    protected void setupEntities() {
+        final SoldierSprite soldierSprite = new SoldierSprite(new Coordinate2D(0, 0));
+        final SoldierHitbox soldierHitbox = new SoldierHitbox(this, scoreboard, new Coordinate2D(0, 0));
+        addEntity(soldierSprite);
+        addEntity(soldierHitbox);
+    }
+
+    public void dropMysteryBox() {
+        Random random = new Random();
+        if(random.nextDouble() < 0.25) {
+            Coordinate2D gridPosition = soldierGrid.getGridPosition();
+            Coordinate2D localPosition = getAnchorLocation();
+
+            Coordinate2D absolutePosition = new Coordinate2D(
+                    gridPosition.getX() + localPosition.getX(),
+                    gridPosition.getY() + localPosition.getY()
+            );
+
+            gamescreen.createMysteryBox(absolutePosition);
+        }
+    }
+}

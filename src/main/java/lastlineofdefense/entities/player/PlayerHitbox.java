@@ -9,12 +9,20 @@ import lastlineofdefense.entities.bullet.Bullet;
 
 import java.util.List;
 
-public class PlayerHitbox extends RectangleEntity implements Collided {
-    protected PlayerHitbox(Coordinate2D initialLocation) {
+public class PlayerHitbox extends RectangleEntity implements Collided, Collider {
+
+    private final Player player;
+
+    protected PlayerHitbox(Player player, Coordinate2D initialLocation) {
         super(initialLocation);
+        this.player = player;
         setWidth(50);
         setHeight(50);
         setFill(Color.TRANSPARENT);
+    }
+
+    public Player getPlayer() {
+        return player;
     }
 
     @Override
