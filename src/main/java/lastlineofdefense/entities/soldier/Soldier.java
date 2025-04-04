@@ -21,7 +21,7 @@ public class Soldier extends DynamicCompositeEntity {
 
     private boolean dead = false;
     private long lastShotTime = 0;
-    private static final long FIRE_RATE = 5000;
+    private final long FIRE_RATE = 5000;
 
     public Soldier(Scoreboard scoreboard, Gamescreen gamescreen, SoldierGrid soldierGrid, Coordinate2D initialLocation, int row, int col) {
         super(initialLocation);
