@@ -16,6 +16,7 @@ public class FullAuto implements IPowerUp {
         int increasedFireRate = 100;
         player.setFireRate(increasedFireRate);
         System.out.println("Full Auto activated! Fire rate increased.");
+        powerUpBox.setImage(this);
     }
 
     @Override

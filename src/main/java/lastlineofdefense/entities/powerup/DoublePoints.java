@@ -18,6 +18,7 @@ public class DoublePoints implements IPowerUp{
     public void activatePowerUp(Player player) {
         scoreboard.setDoublePoints(true);
         System.out.println("Double points activated!");
+        powerUpBox.setImage(this);
     }
 
     @Override

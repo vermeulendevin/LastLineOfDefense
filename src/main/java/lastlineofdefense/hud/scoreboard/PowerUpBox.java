@@ -9,9 +9,9 @@ import lastlineofdefense.entities.powerup.FullAuto;
 import lastlineofdefense.entities.powerup.IPowerUp;
 
 public class PowerUpBox extends CompositeEntity {
-    private SpriteEntity doublePointsSprite;
-    private SpriteEntity doubleTapSprite;
-    private SpriteEntity fullAutoSprite;
+    private DoublePointsSprite doublePointsSprite;
+    private DoubleTapSprite doubleTapSprite;
+    private FullAutoSprite fullAutoSprite;
 
 
     public PowerUpBox(Coordinate2D location) {
