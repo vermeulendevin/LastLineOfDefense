@@ -20,6 +20,8 @@ public class Soldier extends DynamicCompositeEntity {
     private int col;
 
     private boolean dead = false;
+    private long lastShotTime = 0;
+    private static final long FIRE_RATE = 5000;
 
     public Soldier(Scoreboard scoreboard, Gamescreen gamescreen, SoldierGrid soldierGrid, Coordinate2D initialLocation, int row, int col) {
         super(initialLocation);
@@ -50,8 +52,16 @@ public class Soldier extends DynamicCompositeEntity {
         return trueLocation;
     }
 
+    public boolean canShoot() {
+        return System.currentTimeMillis() - lastShotTime >= FIRE_RATE;
+    }
+
     public void shoot() {
+        if(!canShoot()) {
+            return;
+        }
         gamescreen.createBullet(this, absolutePosition(), 0d);
+        lastShotTime = System.currentTimeMillis();
     }
 
     public void dropMysteryBox() {
