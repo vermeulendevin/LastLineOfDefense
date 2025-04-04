@@ -75,7 +75,7 @@ public class SoldierGrid extends DynamicCompositeEntity {
 
     public boolean isInLastRow(Soldier soldier) {
         int col = soldier.getCol();
-        for(int row = rows -1; row > 0; row--) {
+        for(int row = rows -1; row >= 0; row--) {
             if(soldierGrid[row][col] != null && !soldierGrid[row][col].isDead()) {
                 return soldierGrid[row][col] == soldier;
             }
