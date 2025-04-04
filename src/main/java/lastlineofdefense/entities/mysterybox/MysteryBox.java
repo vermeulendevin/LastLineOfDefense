@@ -40,15 +40,10 @@ public class MysteryBox extends DynamicCompositeEntity implements Newtonian, Sce
 
     @Override
     public void notifyBoundaryTouching(SceneBorder border) {
-        setGravityConstant(0);
 
-        switch(border) {
-            case BOTTOM:
-                setGravityConstant(0);
-                setAnchorLocationY(getSceneHeight() - getHeight() - 1);
-                break;
-            default:
-                break;
+        if(border == SceneBorder.BOTTOM) {
+            setGravityConstant(0);
+            setAnchorLocationY(getSceneHeight() - getHeight() - 1);
         }
     }
 
@@ -82,7 +77,7 @@ public class MysteryBox extends DynamicCompositeEntity implements Newtonian, Sce
     public static final class MysteryBoxTimer extends Timer {
         private final MysteryBox mysteryBox;
 
-        protected MysteryBoxTimer(MysteryBox mysteryBox) {
+        private MysteryBoxTimer(MysteryBox mysteryBox) {
             super(10000);
             this.mysteryBox = mysteryBox;
         }
