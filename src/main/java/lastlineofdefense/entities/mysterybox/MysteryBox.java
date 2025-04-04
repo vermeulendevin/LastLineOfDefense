@@ -20,8 +20,6 @@ public class MysteryBox extends DynamicCompositeEntity implements Newtonian, Sce
     private Player player;
     private Scoreboard scoreboard;
 
-    private final List<IPowerUp> powerUps = List.of(new FullAuto(), new DoubleTap(), new PlusOneLife(), new DoublePoints(scoreboard));
-
     public MysteryBox(Scoreboard scoreboard, Coordinate2D initialLocation) {
         super(initialLocation);
         this.scoreboard = scoreboard;
