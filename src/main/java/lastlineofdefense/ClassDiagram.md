@@ -314,80 +314,157 @@ interface UpdateExposer #lightblue {
 
 }
 
-Collider <|.. PlayerHitbox
-Collider <|.. Bullet
-Collider <|.. BorderBottom
+Collider <|... PlayerHitbox
+Collider <|... Bullet
+Collider <|... BorderBottom
 
-Collided <|.. BunkerHitbox
-Collided <|.. MysteryBoxHitbox
-Collided <|.. SoldierHitbox
-Collided <|.. PlayerHitbox
+Collided <|... BunkerHitbox
+Collided <|... MysteryBoxHitbox
+Collided <|... SoldierHitbox
+Collided <|... PlayerHitbox
 
-SceneBorderCrossingWatcher <|.. Bullet
+SceneBorderCrossingWatcher <|... Bullet
 
-SceneBorderTouchingWatcher <|.. Player
-SceneBorderTouchingWatcher <|.. MysteryBox
+SceneBorderTouchingWatcher <|... Player
+SceneBorderTouchingWatcher <|... MysteryBox
 
-MouseButtonPressedListener <|.. PlayButton
-MouseButtonPressedListener <|.. QuitButton
-MouseEnterListener <|.. PlayButton
-MouseEnterListener <|.. QuitButton
-MouseExitListener <|.. PlayButton
-MouseExitListener <|.. QuitButton
+MouseButtonPressedListener <|... PlayButton
+MouseButtonPressedListener <|... QuitButton
+MouseEnterListener <|... PlayButton
+MouseEnterListener <|... QuitButton
+MouseExitListener <|... PlayButton
+MouseExitListener <|... QuitButton
 
-Newtonian <|.. MysteryBox
-Newtonian <|.. Player
+Newtonian <|... MysteryBox
+Newtonian <|... Player
 
-TimerContainer <|.. MysteryBox
+TimerContainer <|... MysteryBox
 
-KeyListener <|.. Player
-KeyListener <|.. Gamescreen
-KeyListener <|.. Pausescreen
+KeyListener <|... Player
+KeyListener <|... Gamescreen
+KeyListener <|... Pausescreen
 
-UpdateExposer <|.. Gamescreen
+UpdateExposer <|... Gamescreen
 
-IPowerUp <|.. DoublePoints
-IPowerUp <|.. DoubleTap
-IPowerUp <|.. FullAuto
-IPowerUp <|.. PlusOneLife
+IPowerUp <|... DoublePoints
+IPowerUp <|... DoubleTap
+IPowerUp <|... FullAuto
+IPowerUp <|... PlusOneLife
 
-YaegerGame <|-- LastLineOfDefenseApp
+YaegerGame <|--- LastLineOfDefenseApp
 
-DynamicScene <|-- Gamescreen
+DynamicScene <|--- Gamescreen
 
-StaticScene <|-- StartScreen
-StaticScene <|-- Pausescreen
-StaticScene <|-- Endscreen
+StaticScene <|--- StartScreen
+StaticScene <|--- Pausescreen
+StaticScene <|--- Endscreen
 
-TextEntity <|-- Scoreboard
-TextEntity <|-- PlayButton
-TextEntity <|-- QuitButton
+TextEntity <|--- Scoreboard
+TextEntity <|--- PlayButton
+TextEntity <|--- QuitButton
 
-CompositeEntity <|-- PowerUpBox
+CompositeEntity <|--- PowerUpBox
 
-SpriteEntity <|-- PlayerSprite
-SpriteEntity <|-- BunkerSprite
-SpriteEntity <|-- SoldierSprite
-SpriteEntity <|-- MysteryBoxSprite
-SpriteEntity <|-- DoublePointsSprite
-SpriteEntity <|-- DoubleTapSprite
-SpriteEntity <|-- FullAutoSprite
-SpriteEntity <|-- Lives
+SpriteEntity <|--- PlayerSprite
+SpriteEntity <|--- BunkerSprite
+SpriteEntity <|--- SoldierSprite
+SpriteEntity <|--- MysteryBoxSprite
+SpriteEntity <|--- DoublePointsSprite
+SpriteEntity <|--- DoubleTapSprite
+SpriteEntity <|--- FullAutoSprite
+SpriteEntity <|--- Lives
 
-RectangleEntity <|-- BorderBottom
-RectangleEntity <|-- BunkerHitbox
-RectangleEntity <|-- PlayerHitbox
-RectangleEntity <|-- SoldierHitbox
-RectangleEntity <|-- MysteryBoxHitbox
+RectangleEntity <|--- BorderBottom
+RectangleEntity <|--- BunkerHitbox
+RectangleEntity <|--- PlayerHitbox
+RectangleEntity <|--- SoldierHitbox
+RectangleEntity <|--- MysteryBoxHitbox
 
-DynamicCompositeEntity <|-- SoldierGrid
-DynamicCompositeEntity <|-- Soldier
-DynamicCompositeEntity <|-- Bunker
-DynamicCompositeEntity <|-- MysteryBox
-DynamicCompositeEntity <|-- Player
+DynamicCompositeEntity <|--- SoldierGrid
+DynamicCompositeEntity <|--- Soldier
+DynamicCompositeEntity <|--- Bunker
+DynamicCompositeEntity <|--- MysteryBox
+DynamicCompositeEntity <|--- Player
 
-DynamicRectangleEntity <|-- Bullet
+DynamicRectangleEntity <|--- Bullet
 
+LastLineOfDefenseApp "1" ---> "1" StartScreen
+LastLineOfDefenseApp "1" ---> "1" Pausescreen
+LastLineOfDefenseApp "1" ---> "1" Endscreen
+LastLineOfDefenseApp "1" ---> "1" Gamescreen
 
+StartScreen "1" ---> "1" PlayButton
+StartScreen "1" ---> "1" QuitButton
+StartScreen "1" ---> "1" LastLineOfDefenseApp
+
+Pausescreen "1" ---> "1" LastLineOfDefenseApp
+Pausescreen "1" ---> "1" PlayButton
+Pausescreen "1" ---> "1" QuitButton
+
+Gamescreen "1" ---> "1" LastLineOfDefenseApp
+Gamescreen "1" ---> "1" Player
+Gamescreen "1" ---> "1" SoldierGrid
+Gamescreen "1" ---> "1.." Scoreboard
+Gamescreen "1" ---> "1" Bunker
+Gamescreen "1" ---> "1" Bullet
+Gamescreen "1" ---> "1" MysteryBox
+Gamescreen "1" ---> "1.." Lives
+
+Endscreen "1" ---> "1" LastLineOfDefenseApp
+Endscreen "1" ---> "1" PlayButton
+Endscreen "1" ---> "1" QuitButton
+
+PowerUpBox "1" ---> "1" DoublePointsSprite
+PowerUpBox "1" ---> "1" DoubleTapSprite
+PowerUpBox "1" ---> "1" FullAutoSprite
+
+SoldierHitbox "1" ---> "1" Soldier
+SoldierHitbox "1" ---> "1" Scoreboard
+
+SoldierGrid "1" ---> "1.." Soldier
+SoldierGrid "1" ---> "1" Scoreboard
+SoldierGrid "1" ---> "1" Gamescreen
+
+Soldier "1" ---> "1" SoldierHitbox
+Soldier "1" ---> "1" SoldierGrid
+Soldier "1" ---> "1" Scoreboard
+Soldier "1" ---> "1" Gamescreen
+Soldier "1" ---> "1" MysteryBox
+
+PlusOneLife "1" ---> "1" Player
+DoublePoints "1" ---> "1" Player
+DoublePoints "1" ---> "1" Scoreboard
+DoubleTap "1" ---> "1" Player
+FullAuto "1" ---> "1" Player
+
+PlayerHitbox "1" ---> "1" Player
+PlayerHitbox "1" ---> "1" LastLineOfDefenseApp
+
+Player "1" ---> "1" PlayerHitbox
+Player "1" ---> "1" PlayerSprite
+Player "1" ---> "1" LastLineOfDefenseApp
+Player "1" ---> "1" Gamescreen
+
+MysteryBoxHitbox "1" ---> "1" MysteryBox
+
+MysteryBox "1" ---> "1" MysteryBoxHitbox
+MysteryBox "1" ---> "1" Scoreboard
+MysteryBox "1" ---> "1" Player
+MysteryBox "1" ---> "1" MysteryBoxSprite
+MysteryBox "1" ---> "1" PowerUpBox
+MysteryBox "1" ---> "1" DoublePoints
+MysteryBox "1" ---> "1" DoubleTap
+MysteryBox "1" ---> "1" FullAuto
+MysteryBox "1" ---> "1" PlusOneLife
+
+QuitButton "1" ---> "1" LastLineOfDefenseApp
+PlayButton "1" ---> "1" LastLineOfDefenseApp
+
+BunkerHitbox "1" ---> "1" Bunker
+
+Bunker "1" ---> "1" BunkerHitbox
+Bunker "1" ---> "1" BunkerSprite
+
+Bullet "1" ---> "1" Object
 @enduml
 ```
