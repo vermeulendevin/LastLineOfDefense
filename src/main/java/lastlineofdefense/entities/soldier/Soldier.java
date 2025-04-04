@@ -31,18 +31,26 @@ public class Soldier extends DynamicCompositeEntity {
         addEntity(soldierHitbox);
     }
 
+    private Coordinate2D absolutePosition() {
+        Coordinate2D gridPosition = soldierGrid.getGridPosition();
+        Coordinate2D localPosition = getAnchorLocation();
+
+        Coordinate2D trueLocation = new Coordinate2D(
+                gridPosition.getX() + localPosition.getX(),
+                gridPosition.getY() + localPosition.getY()
+        );
+
+        return trueLocation;
+    }
+
+    public void shoot() {
+        gamescreen.createBullet(absolutePosition(), 0d);
+    }
+
     public void dropMysteryBox() {
         Random random = new Random();
         if(random.nextDouble() < 0.25) {
-            Coordinate2D gridPosition = soldierGrid.getGridPosition();
-            Coordinate2D localPosition = getAnchorLocation();
-
-            Coordinate2D absolutePosition = new Coordinate2D(
-                    gridPosition.getX() + localPosition.getX(),
-                    gridPosition.getY() + localPosition.getY()
-            );
-
-            gamescreen.createMysteryBox(absolutePosition);
+            gamescreen.createMysteryBox(absolutePosition());
         }
     }
 }

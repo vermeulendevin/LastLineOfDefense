@@ -85,8 +85,8 @@ public class Gamescreen extends DynamicScene implements UpdateExposer, KeyListen
         }
     }
 
-    public void createBullet() {
-        Bullet bullet = new Bullet(new Coordinate2D(player.getX(), getHeight() / 10 * 8.5), 180d);
+    public void createBullet(Coordinate2D location, double direction) {
+        Bullet bullet = new Bullet(location, direction);
         addEntity(bullet);
     }
 
