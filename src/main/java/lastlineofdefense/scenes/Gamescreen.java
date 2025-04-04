@@ -14,6 +14,7 @@ import lastlineofdefense.entities.mysterybox.MysteryBox;
 import lastlineofdefense.entities.player.Player;
 import lastlineofdefense.entities.soldier.SoldierGrid;
 import lastlineofdefense.hud.scoreboard.Lives;
+import lastlineofdefense.hud.scoreboard.PowerUpBox;
 import lastlineofdefense.hud.scoreboard.Scoreboard;
 
 import java.util.Set;
@@ -25,6 +26,7 @@ public class Gamescreen extends DynamicScene implements UpdateExposer, KeyListen
     private SoldierGrid soldierGrid;
     private Scoreboard score;
     private Scoreboard highScore;
+    private PowerUpBox powerUpBox;
 
     private int nrOfBunkers = 4;
 
@@ -53,6 +55,8 @@ public class Gamescreen extends DynamicScene implements UpdateExposer, KeyListen
         highScore = new Scoreboard(new Coordinate2D(getWidth() - 225, 15));
         highScore.displayHighScore();
         addEntity(highScore);
+
+        powerUpBox = new PowerUpBox(new Coordinate2D(getWidth() - getWidth()/10, getHeight() / 10 * 8));
 
         soldierGrid = new SoldierGrid(score, this, 3, 10, new Coordinate2D(100, getHeight() / 10 * 1), 80, 75, getWidth());
         addEntity(soldierGrid);
@@ -92,7 +96,7 @@ public class Gamescreen extends DynamicScene implements UpdateExposer, KeyListen
     }
 
     public void createMysteryBox(Coordinate2D location) {
-        MysteryBox mysterybox = new MysteryBox(score, location);
+        MysteryBox mysterybox = new MysteryBox(score, location, powerUpBox);
         addEntity(mysterybox);
     }
 
