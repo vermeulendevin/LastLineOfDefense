@@ -1,6 +1,8 @@
 package lastlineofdefense.entities.mysterybox;
 
 import com.github.hanyaeger.api.Coordinate2D;
+import com.github.hanyaeger.api.Timer;
+import com.github.hanyaeger.api.TimerContainer;
 import com.github.hanyaeger.api.entities.DynamicCompositeEntity;
 import com.github.hanyaeger.api.entities.Newtonian;
 import com.github.hanyaeger.api.entities.SceneBorderTouchingWatcher;
@@ -12,7 +14,7 @@ import lastlineofdefense.hud.scoreboard.Scoreboard;
 import java.util.List;
 import java.util.Random;
 
-public class MysteryBox extends DynamicCompositeEntity implements Newtonian, SceneBorderTouchingWatcher {
+public class MysteryBox extends DynamicCompositeEntity implements Newtonian, SceneBorderTouchingWatcher, TimerContainer {
 
     private IPowerUp powerUp;
     private Player player;
@@ -38,15 +40,10 @@ public class MysteryBox extends DynamicCompositeEntity implements Newtonian, Sce
 
     @Override
     public void notifyBoundaryTouching(SceneBorder border) {
-        setGravityConstant(0);
 
-        switch(border) {
-            case BOTTOM:
-                setGravityConstant(0);
-                setAnchorLocationY(getSceneHeight() - getHeight() - 1);
-                break;
-            default:
-                break;
+        if(border == SceneBorder.BOTTOM) {
+            setGravityConstant(0);
+            setAnchorLocationY(getSceneHeight() - getHeight() - 1);
         }
     }
 
@@ -70,5 +67,24 @@ public class MysteryBox extends DynamicCompositeEntity implements Newtonian, Sce
 
     public void removeMysteryBox() {
         remove();
+    }
+
+    @Override
+    public void setupTimers() {
+        addTimer(new MysteryBoxTimer(this));
+    }
+
+    public static final class MysteryBoxTimer extends Timer {
+        private final MysteryBox mysteryBox;
+
+        private MysteryBoxTimer(MysteryBox mysteryBox) {
+            super(10000);
+            this.mysteryBox = mysteryBox;
+        }
+
+        @Override
+        public void onAnimationUpdate(long l) {
+            mysteryBox.removeMysteryBox();
+        }
     }
 }

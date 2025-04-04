@@ -16,11 +16,18 @@ public class Soldier extends DynamicCompositeEntity {
     private Gamescreen gamescreen;
     private SoldierGrid soldierGrid;
 
-    public Soldier(Scoreboard scoreboard, Gamescreen gamescreen, SoldierGrid soldierGrid, Coordinate2D initialLocation) {
+    private int row;
+    private int col;
+
+    private boolean dead = false;
+
+    public Soldier(Scoreboard scoreboard, Gamescreen gamescreen, SoldierGrid soldierGrid, Coordinate2D initialLocation, int row, int col) {
         super(initialLocation);
         this.scoreboard = scoreboard;
         this.gamescreen = gamescreen;
         this.soldierGrid = soldierGrid;
+        this.row = row;
+        this.col = col;
     }
 
     @Override
@@ -31,18 +38,43 @@ public class Soldier extends DynamicCompositeEntity {
         addEntity(soldierHitbox);
     }
 
+    public Coordinate2D absolutePosition() {
+        Coordinate2D gridPosition = soldierGrid.getGridPosition();
+        Coordinate2D localPosition = getAnchorLocation();
+
+        Coordinate2D trueLocation = new Coordinate2D(
+                gridPosition.getX() + localPosition.getX(),
+                gridPosition.getY() + localPosition.getY()
+        );
+
+        return trueLocation;
+    }
+
+    public void shoot() {
+        gamescreen.createBullet(this, absolutePosition(), 0d);
+    }
+
     public void dropMysteryBox() {
         Random random = new Random();
         if(random.nextDouble() < 0.25) {
-            Coordinate2D gridPosition = soldierGrid.getGridPosition();
-            Coordinate2D localPosition = getAnchorLocation();
-
-            Coordinate2D absolutePosition = new Coordinate2D(
-                    gridPosition.getX() + localPosition.getX(),
-                    gridPosition.getY() + localPosition.getY()
-            );
-
-            gamescreen.createMysteryBox(absolutePosition);
+            gamescreen.createMysteryBox(absolutePosition());
         }
+    }
+
+    public int getRow() {
+        return row;
+    }
+
+    public int getCol() {
+        return col;
+    }
+
+    public void setAsDead() {
+        dead = true;
+        remove();
+    }
+
+    public boolean isDead() {
+        return dead;
     }
 }

@@ -23,6 +23,8 @@ public class Player extends DynamicCompositeEntity implements SceneBorderTouchin
     private long lastShotTime = 0;
     private int fireRate = 500;
 
+    private boolean activePowerUp = false;
+
     public Player(LastLineOfDefenseApp app, Gamescreen gamescreen, Coordinate2D initialLocation) {
         super(initialLocation);
         this.app = app;
@@ -75,7 +77,7 @@ public class Player extends DynamicCompositeEntity implements SceneBorderTouchin
     }
 
     public void shoot() {
-        gamescreen.createBullet();
+        gamescreen.createBullet(this, getAnchorLocation(), 180d);
     }
 
     public double getX() {
@@ -92,6 +94,7 @@ public class Player extends DynamicCompositeEntity implements SceneBorderTouchin
 
     public void setPowerUp(IPowerUp powerUp) {
         powerUp.activatePowerUp(this);
+        this.activePowerUp = true;
     }
 
     public void setLives(byte lives) {
@@ -100,5 +103,9 @@ public class Player extends DynamicCompositeEntity implements SceneBorderTouchin
 
     public byte getLives() {
         return lives;
+    }
+
+    public boolean isActivePowerUp() {
+        return activePowerUp;
     }
 }
