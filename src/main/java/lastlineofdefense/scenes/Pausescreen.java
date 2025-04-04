@@ -4,6 +4,8 @@ import com.github.hanyaeger.api.AnchorPoint;
 import com.github.hanyaeger.api.Coordinate2D;
 import com.github.hanyaeger.api.entities.impl.TextEntity;
 import com.github.hanyaeger.api.scenes.StaticScene;
+import com.github.hanyaeger.api.userinput.KeyListener;
+import javafx.scene.input.KeyCode;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
@@ -11,11 +13,15 @@ import lastlineofdefense.LastLineOfDefenseApp;
 import lastlineofdefense.entities.buttons.PlayButton;
 import lastlineofdefense.entities.buttons.QuitButton;
 
-public class Pausescreen extends StaticScene {
+import java.util.Set;
+import java.util.concurrent.CopyOnWriteArraySet;
+
+public class Pausescreen extends StaticScene implements KeyListener {
 
     private LastLineOfDefenseApp app;
 
-    public Pausescreen(LastLineOfDefenseApp App) {
+    public Pausescreen(LastLineOfDefenseApp app) {
+        this.app = app;
     }
 
     @Override
@@ -44,5 +50,17 @@ public class Pausescreen extends StaticScene {
         var quitGameButton = new QuitButton(app, new Coordinate2D((getWidth()/4)*3, (getHeight()/4)*3), "Quit Game");
         quitGameButton.setAnchorPoint(AnchorPoint.CENTER_CENTER);
         addEntity(quitGameButton);
+    }
+
+    @Override
+    public void onPressedKeysChange(Set<KeyCode> pressedKeys) {
+        if (pressedKeys.contains(KeyCode.ESCAPE)) {
+            long currentTime = System.currentTimeMillis();
+            long prevTime = 0;
+            if(currentTime - prevTime >= 1000) {
+                app.setActiveScene(1);
+                prevTime = currentTime;
+            }
+        }
     }
 }

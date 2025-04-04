@@ -9,6 +9,7 @@ import com.github.hanyaeger.api.entities.SceneBorderTouchingWatcher;
 import com.github.hanyaeger.api.scenes.SceneBorder;
 import lastlineofdefense.entities.player.Player;
 import lastlineofdefense.entities.powerup.*;
+import lastlineofdefense.hud.scoreboard.PowerUpBox;
 import lastlineofdefense.hud.scoreboard.Scoreboard;
 
 import java.util.List;
@@ -19,11 +20,11 @@ public class MysteryBox extends DynamicCompositeEntity implements Newtonian, Sce
     private IPowerUp powerUp;
     private Player player;
     private Scoreboard scoreboard;
+    private PowerUpBox powerUpBox;
 
-    private final List<IPowerUp> powerUps = List.of(new FullAuto(), new DoubleTap(), new PlusOneLife(), new DoublePoints(scoreboard));
-
-    public MysteryBox(Scoreboard scoreboard, Coordinate2D initialLocation) {
+    public MysteryBox(Scoreboard scoreboard, Coordinate2D initialLocation, PowerUpBox powerUpBox) {
         super(initialLocation);
+        this.powerUpBox = powerUpBox;
         this.scoreboard = scoreboard;
         setGravityConstant(0.3);
         setFrictionConstant(0.10);
@@ -50,14 +51,14 @@ public class MysteryBox extends DynamicCompositeEntity implements Newtonian, Sce
     public void chooseRandomPowerUp() {
         int chance = new Random().nextInt(100);
 
-        if(chance < 50) {
-            powerUp = new DoubleTap();  // 50%
+        if(chance < 45) {
+            powerUp = new DoubleTap(powerUpBox);  // 45%
         } else if(chance < 70) {
-            powerUp = new FullAuto();   // 20%
-        } else if(chance < 90) {
-            powerUp = new DoublePoints(scoreboard);   // 20%
+            powerUp = new DoublePoints(scoreboard, powerUpBox);   // 25%
+        } else if(chance < 85) {
+            powerUp = new FullAuto(powerUpBox);   // 15%
         } else {
-            powerUp = new PlusOneLife();   // 10%
+            powerUp = new PlusOneLife();   // 15%
         }
     }
 

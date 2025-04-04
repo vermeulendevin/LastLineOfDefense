@@ -16,11 +16,20 @@ public class Soldier extends DynamicCompositeEntity {
     private Gamescreen gamescreen;
     private SoldierGrid soldierGrid;
 
-    public Soldier(Scoreboard scoreboard, Gamescreen gamescreen, SoldierGrid soldierGrid, Coordinate2D initialLocation) {
+    private int row;
+    private int col;
+
+    private boolean dead = false;
+    private long lastShotTime = 0;
+    private static final long FIRE_RATE = 5000;
+
+    public Soldier(Scoreboard scoreboard, Gamescreen gamescreen, SoldierGrid soldierGrid, Coordinate2D initialLocation, int row, int col) {
         super(initialLocation);
         this.scoreboard = scoreboard;
         this.gamescreen = gamescreen;
         this.soldierGrid = soldierGrid;
+        this.row = row;
+        this.col = col;
     }
 
     @Override
@@ -31,18 +40,51 @@ public class Soldier extends DynamicCompositeEntity {
         addEntity(soldierHitbox);
     }
 
+    public Coordinate2D absolutePosition() {
+        Coordinate2D gridPosition = soldierGrid.getGridPosition();
+        Coordinate2D localPosition = getAnchorLocation();
+
+        Coordinate2D trueLocation = new Coordinate2D(
+                gridPosition.getX() + localPosition.getX(),
+                gridPosition.getY() + localPosition.getY()
+        );
+
+        return trueLocation;
+    }
+
+    public boolean canShoot() {
+        return System.currentTimeMillis() - lastShotTime >= FIRE_RATE;
+    }
+
+    public void shoot() {
+        if(!canShoot()) {
+            return;
+        }
+        gamescreen.createBullet(this, absolutePosition(), 0d);
+        lastShotTime = System.currentTimeMillis();
+    }
+
     public void dropMysteryBox() {
         Random random = new Random();
         if(random.nextDouble() < 0.25) {
-            Coordinate2D gridPosition = soldierGrid.getGridPosition();
-            Coordinate2D localPosition = getAnchorLocation();
-
-            Coordinate2D absolutePosition = new Coordinate2D(
-                    gridPosition.getX() + localPosition.getX(),
-                    gridPosition.getY() + localPosition.getY()
-            );
-
-            gamescreen.createMysteryBox(absolutePosition);
+            gamescreen.createMysteryBox(absolutePosition());
         }
+    }
+
+    public int getRow() {
+        return row;
+    }
+
+    public int getCol() {
+        return col;
+    }
+
+    public void setAsDead() {
+        dead = true;
+        remove();
+    }
+
+    public boolean isDead() {
+        return dead;
     }
 }

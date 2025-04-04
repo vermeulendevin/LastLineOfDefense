@@ -5,9 +5,15 @@ import com.github.hanyaeger.api.entities.DynamicCompositeEntity;
 import lastlineofdefense.hud.scoreboard.Scoreboard;
 import lastlineofdefense.scenes.Gamescreen;
 
+import java.util.Random;
+
 public class SoldierGrid extends DynamicCompositeEntity {
     private Scoreboard scoreboard;
     private Gamescreen gamescreen;
+
+    private Soldier[][] soldierGrid;
+
+    private final Random random = new Random();
 
     private int rows;
     private int cols;
@@ -27,6 +33,7 @@ public class SoldierGrid extends DynamicCompositeEntity {
         this.spacingX = spacingX;
         this.spacingY = spacingY;
         this.gameWidth = gameWidth;
+        this.soldierGrid = new Soldier[rows][cols];
     }
 
     @Override
@@ -35,7 +42,8 @@ public class SoldierGrid extends DynamicCompositeEntity {
             for (int col = 0; col < cols; col++) {
                 int x = col * spacingX;
                 int y = row * spacingY;
-                Soldier soldier = new Soldier(scoreboard, gamescreen, this, new Coordinate2D(x, y));
+                Soldier soldier = new Soldier(scoreboard, gamescreen, this, new Coordinate2D(x, y), row, col);
+                soldierGrid[row][col] = soldier;
                 addEntity(soldier);
             }
         }
@@ -63,5 +71,30 @@ public class SoldierGrid extends DynamicCompositeEntity {
 
     public Coordinate2D getGridPosition() {
         return new Coordinate2D(getAnchorLocation());
+    }
+
+    public boolean isInLastRow(Soldier soldier) {
+        int col = soldier.getCol();
+        for(int row = rows -1; row >= 0; row--) {
+            if(soldierGrid[row][col] != null && !soldierGrid[row][col].isDead()) {
+                return soldierGrid[row][col] == soldier;
+            }
+        }
+        return false;
+    }
+
+    public void triggerLastRowShooting() {
+        for (int row = rows - 1; row >= 0; row--) {
+            for (int col = 0; col < cols; col++) {
+                Soldier soldier = soldierGrid[row][col];
+                if (soldier != null && !soldier.isDead()) {
+                    if (isInLastRow(soldier)) {
+                        if(random.nextInt(100) == 0) {
+                            soldier.shoot();
+                        }
+                    }
+                }
+            }
+        }
     }
 }
