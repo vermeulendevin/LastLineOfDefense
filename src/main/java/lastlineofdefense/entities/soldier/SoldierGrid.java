@@ -78,4 +78,17 @@ public class SoldierGrid extends DynamicCompositeEntity {
         }
         return false;
     }
+
+    public void triggerLastRowShooting() {
+        for (int row = rows - 1; row >= 0; row--) {
+            for (int col = 0; col < cols; col++) {
+                Soldier soldier = soldierGrid[row][col];
+                if (soldier != null && !soldier.isDead()) {
+                    if (isInLastRow(soldier)) {
+                        soldier.shoot();
+                    }
+                }
+            }
+        }
+    }
 }

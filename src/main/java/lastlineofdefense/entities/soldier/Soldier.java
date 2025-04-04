@@ -38,7 +38,7 @@ public class Soldier extends DynamicCompositeEntity {
         addEntity(soldierHitbox);
     }
 
-    private Coordinate2D absolutePosition() {
+    public Coordinate2D absolutePosition() {
         Coordinate2D gridPosition = soldierGrid.getGridPosition();
         Coordinate2D localPosition = getAnchorLocation();
 

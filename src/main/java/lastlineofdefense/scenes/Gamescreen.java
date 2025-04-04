@@ -78,6 +78,7 @@ public class Gamescreen extends DynamicScene implements UpdateExposer, KeyListen
     @Override
     public void explicitUpdate(long timestamp) {
         soldierGrid.update();
+        soldierGrid.triggerLastRowShooting();
 
         if(escPressed) {
             app.setActiveScene(2);
