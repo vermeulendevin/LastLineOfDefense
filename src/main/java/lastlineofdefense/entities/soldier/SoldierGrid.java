@@ -50,8 +50,8 @@ public class SoldierGrid extends DynamicCompositeEntity {
     }
 
     public void update() {
-        double dx = movingRight ? speed : -speed;
-        setAnchorLocation(new Coordinate2D(getAnchorLocation().getX() + dx, getAnchorLocation().getY()));
+        double horizontalShift = movingRight ? speed : -speed;
+        setAnchorLocation(new Coordinate2D(getAnchorLocation().getX() + horizontalShift, getAnchorLocation().getY()));
 
         double gridRightEdge = getAnchorLocation().getX() + (cols - 1) * spacingX;
         double gridLeftEdge = getAnchorLocation().getX();
