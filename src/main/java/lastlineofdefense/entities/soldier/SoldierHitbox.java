@@ -26,7 +26,10 @@ public class SoldierHitbox extends RectangleEntity implements Collided {
     @Override
     public void onCollision(List<Collider> collidingObject) {
         for (Collider collider : collidingObject) {
-            if (collider instanceof Bullet) {
+            if (collider instanceof Bullet bullet) {
+                if(bullet.getShooter() instanceof Soldier) {
+                    continue;
+                }
                 scoreboard.setCurrentScore(15);
                 soldier.dropMysteryBox();
                 System.out.println(scoreboard.getCurrentScore());

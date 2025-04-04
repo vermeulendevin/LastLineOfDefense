@@ -77,7 +77,7 @@ public class Player extends DynamicCompositeEntity implements SceneBorderTouchin
     }
 
     public void shoot() {
-        gamescreen.createBullet(getAnchorLocation(), 180d);
+        gamescreen.createBullet(this, getAnchorLocation(), 180d);
     }
 
     public double getX() {

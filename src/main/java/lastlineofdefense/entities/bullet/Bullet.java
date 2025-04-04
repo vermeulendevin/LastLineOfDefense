@@ -7,10 +7,12 @@ import com.github.hanyaeger.api.entities.impl.DynamicRectangleEntity;
 import com.github.hanyaeger.api.scenes.SceneBorder;
 
 public class Bullet extends DynamicRectangleEntity implements SceneBorderCrossingWatcher, Collider {
+    private final Object shooter;
     private final double speed = 10;
 
-    public Bullet(Coordinate2D initialLocation, double direction) {
+    public Bullet(Object shooter, Coordinate2D initialLocation, double direction) {
         super(initialLocation);
+        this.shooter = shooter;
         setHeight(5);
         setWidth(2);
         setMotion(speed, direction);
@@ -21,5 +23,9 @@ public class Bullet extends DynamicRectangleEntity implements SceneBorderCrossin
         if (sceneBorder.equals(SceneBorder.TOP) || sceneBorder.equals(SceneBorder.BOTTOM)) {
             remove();
         }
+    }
+
+    public Object getShooter() {
+        return shooter;
     }
 }

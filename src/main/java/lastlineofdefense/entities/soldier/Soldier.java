@@ -51,7 +51,7 @@ public class Soldier extends DynamicCompositeEntity {
     }
 
     public void shoot() {
-        gamescreen.createBullet(absolutePosition(), 0d);
+        gamescreen.createBullet(this, absolutePosition(), 0d);
     }
 
     public void dropMysteryBox() {

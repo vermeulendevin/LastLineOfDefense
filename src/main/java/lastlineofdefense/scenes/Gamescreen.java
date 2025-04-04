@@ -86,8 +86,8 @@ public class Gamescreen extends DynamicScene implements UpdateExposer, KeyListen
         }
     }
 
-    public void createBullet(Coordinate2D location, double direction) {
-        Bullet bullet = new Bullet(location, direction);
+    public void createBullet(Object shooter, Coordinate2D location, double direction) {
+        Bullet bullet = new Bullet(shooter, location, direction);
         addEntity(bullet);
     }
 
